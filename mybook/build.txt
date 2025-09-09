@@ -1,0 +1,7 @@
+jupyter-book build mybook
+
+# activate env:
+
+# create & activate venv
+python -m venv .venv
+source .venv/bin/activate

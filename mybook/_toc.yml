@@ -1,0 +1,13 @@
+format: jb-book
+root: intro
+
+chapters:
+  - file: docs/labs/README.md
+    title: 💻 Laboratory
+    sections:
+      - glob: docs/labs/lab*.ipynb
+
+  - file: docs/projects/README.md
+    title: 🗂️ Projects
+    sections:
+      - glob: docs/projects/project*.ipynb
