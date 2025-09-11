@@ -3,40 +3,37 @@ name: Deploy Jupyter Book
 on:
   push:
     branches:
-      - main   # build only when pushing to main
+      - main
+
+permissions:
+  contents: write   # <-- allow pushing to gh-pages
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Set up Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.12"
 
-      # 3. Install dependencies
       - name: Install dependencies
         run: |
           pip install -U pip
           pip install jupyter-book ghp-import
 
-      # 4. Build Jupyter Book
       - name: Build the book
-        run: |
-          jupyter-book build mybook/
+        run: jupyter-book build mybook/
 
-      # 5. Add .nojekyll (to stop Jekyll from messing with your files)
       - name: Disable Jekyll
-        run: |
-          touch mybook/_build/html/.nojekyll
+        run: touch mybook/_build/html/.nojekyll
 
-      # 6. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ghp-import -n -p -f mybook/_build/html
+          ghp-import -n -p -f mybook/_build/html -r https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
