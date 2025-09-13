@@ -2,15 +2,12 @@ format: jb-book
 root: intro
 
 chapters:
-  - file: docs/labs/README
-    title: Laboratory
+  - file: docs/labs/README.md
+    title: 💻 Laboratory
     sections:
-      - file: docs/labs/lab1.ipynb
-      - file: docs/labs/lab2.ipynb
-      - file: docs/labs/lab3.ipynb
-      - file: docs/labs/lab4.ipynb
-      - file: docs/labs/lab5.ipynb
-  - file: docs/projects/README
-    title: Projects
+      - glob: docs/labs/lab*.ipynb
+
+  - file: docs/projects/README.md
+    title: 🗂️ Projects
     sections:
-      - file: docs/projects/project.ipynb
+      - glob: docs/projects/project*.ipynb
