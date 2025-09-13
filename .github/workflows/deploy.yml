@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write   
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -22,11 +23,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -U pip
+          pip install --upgrade pip
           pip install jupyter-book ghp-import
 
-      - name: Build the book
-        run: jupyter-book build mybook/
+      - name: Build the book (render notebooks only)
+        run: jupyter-book build mybook/ --execute off
 
       - name: Disable Jekyll
         run: touch mybook/_build/html/.nojekyll
