@@ -14,7 +14,7 @@ Each lab is provided as a **Jupyter Notebook**. To navigate:
 <div style="border: 2px solid #4CAF50; background-color: #e8f5e9; padding: 15px; border-radius: 10px; margin-top: 10px; margin-bottom: 10px;">
 Labs Folder Overview:
 
-- **Lab 1:** We apply the four main types of data analytics
+- **Lab 1:** We applied the four main types of data analytics
 - **Lab 2:** Perform a single forward pass in a feedforward neural network by computing weighted sums, applying activation functions, and generating an output.
 - **Lab 3:** Learned how to implement both **forward and backward propagation** in a feedforward neural network.  
 - **Lab 4:** Training a linear regression model in PyTorch involves defining a simple network, selecting a suitable loss function (MSE), and using an optimizer (SGD) to update weights.   
