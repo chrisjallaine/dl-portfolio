@@ -15,8 +15,11 @@ Each lab is provided as a **Jupyter Notebook**. To navigate:
 Labs Folder Overview:
 
 - **Lab 1:** 
-- **Lab 2:** 
-- **Lab 3:** 
+- **Lab 2:** Perform a single forward pass in a feedforward neural network by computing weighted sums, applying activation functions, and generating an output.
+- **Lab 3:** Learned how to implement both **forward and backward propagation** in a feedforward neural network.  
+- **Lab 4:** Training a linear regression model in PyTorch involves defining a simple network, selecting a suitable loss function (MSE), and using an optimizer (SGD) to update weights.   
+- **Lab 5:** Learned how PyTorch tensor objects work, including creating them from scratch, converting NumPy arrays, and performing key operations like indexing, slicing, reshaping, and arithmetic.
+
 *(will add or update these descriptions based on my actual lab notebooks)*
 </div>
 
