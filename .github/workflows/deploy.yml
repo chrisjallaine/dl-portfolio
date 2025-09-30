@@ -24,11 +24,12 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install "jupyter-book>=0.15.1" ghp-import
+          pip install jupyter-book ghp-import
           pip install -r requirements.txt
+          pip install torchvision
           
       - name: Build the book (no execution)
-        run: jupyter-book build mybook --execute never
+        run: jupyter-book build mybook
 
       - name: Disable Jekyll
         run: touch mybook/_build/html/.nojekyll
