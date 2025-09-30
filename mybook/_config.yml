@@ -1,47 +1,31 @@
-name: Deploy Jupyter Book
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
 
-on:
-  push:
-    branches:
-      - main
+title: ChrisJallaine's Deep Learning Portfolio
+author: Chris Jallaine
+logo: logo1.gif 
 
-permissions:
-  contents: write   
+# Execution Control
+# 'cache' tells Jupyter Book to use saved outputs and never run the code during the build.
+execute:
+  execute_notebooks: 'cache'
 
-jobs:
-  build-deploy:
-    runs-on: ubuntu-latest
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.12"
+repository:
+  url: https://github.com/chrisjallaine/dl-portfolio.git
+  path_to_book: mybook   
+  branch: main  
 
-      - name: Install dependencies
-        run: |
-          # Install core tools
-          pip install --upgrade pip
-          pip install jupyter-book ghp-import
-          # Install any custom dependencies required by your notebooks
-          pip install -r requirements.txt
-          
-
-      - name: Build the book (skipping execution via _config.yml)
-        # 💡 The 'execute_notebooks: cache' setting in your _config.yml 
-        # ensures no code is run during this build step, resolving KeyboardInterrupts.
-        run: jupyter-book build mybook
-
-      - name: Disable Jekyll
-        # Creates an empty file to tell GitHub Pages not to process the site with Jekyll
-        run: touch mybook/_build/html/.nojekyll
-
-      - name: Deploy to GitHub Pages
-        # Uses ghp-import to push the built HTML to the gh-pages branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          ghp-import -n -p -f mybook/_build/html -r https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: true
+  use_repository_button: true
