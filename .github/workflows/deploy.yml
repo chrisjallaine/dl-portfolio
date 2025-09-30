@@ -25,7 +25,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install jupyter-book ghp-import 
-          pip install numpy
+          
 
       - name: Build the book (render notebooks only)
         run: jupyter-book build mybook/z
