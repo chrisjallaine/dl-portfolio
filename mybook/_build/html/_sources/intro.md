@@ -3,10 +3,9 @@
 </div>
 
 ---
+Deep Learning Portfolio.
 
-## Welcome to My Deep Learning Portfolio 🤖
-
-This Jupyter Book is a curated collection of my **lab exercises** and **projects** in Deep Learning.  
+*This Jupyter Book is a curated collection of my **lab exercises** and **projects** in Deep Learning.*  
 
 <div style="text-align: center;">
   <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNm5ibGlvZGU2eXZpNTB1aDVvajZzb3d4OGQwZ2s0MWp1dGdhdWE5dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3sDaYbHuv8ypgZCcjG/giphy.gif" width="400" />
@@ -32,8 +31,14 @@ I am constantly experimenting with <strong>Python-based frameworks</strong> like
 
 ### Hey, Code with My Jams!
 
-I love coding while listening to music!  
-🎵 [Check out my Spotify playlist here](https://open.spotify.com/playlist/1mQnBoQ3td4J3Hr7WWI8o0?si=zldDwZe2RQiVyeqtXR_Kuw)
+<div style="text-align: center; margin-top: 10px;">
+  <div style="display: inline-block; margin: 0 20px; text-align: center;">
+    <a href="https://open.spotify.com/playlist/1mQnBoQ3td4J3Hr7WWI8o0?si=zldDwZe2RQiVyeqtXR_Kuw" target="_blank">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/spotify.svg" width="40" height="40" alt="Spotify" />
+      <div>Spotify Playlist</div>
+    </a>
+  </div>
+</div>
 
 ### Connect with Me
 
