@@ -27,9 +27,8 @@ jobs:
           pip install jupyter-book ghp-import
           pip install -r requirements.txt
           
-
-      - name: Build the book (render notebooks only)
-        run: jupyter-book build mybook
+      - name: Build the book (do NOT execute notebooks)
+        run: jupyter-book build mybook --execute never
 
       - name: Disable Jekyll
         run: touch mybook/_build/html/.nojekyll
