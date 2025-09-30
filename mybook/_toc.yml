@@ -10,6 +10,7 @@ chapters:
       - file: docs/labs/lab3.ipynb
       - file: docs/labs/lab4.ipynb
       - file: docs/labs/lab5.ipynb
+      - file: docs/labs/lab6.ipynb
 
   - file: docs/projects/README.md
     title: 🗂️ Projects
