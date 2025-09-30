@@ -1,3 +1,25 @@
-jupyter-book
-matplotlib
+# Core Python scientific stack
 numpy
+pandas
+scipy
+matplotlib
+seaborn
+
+# Machine Learning
+scikit-learn
+torch
+torchvision
+torchaudio
+
+# Jupyter ecosystem
+jupyter
+jupyterlab
+notebook
+jupyter-book
+
+# Visualization (extra, useful for data science)
+plotly
+
+# Utilities
+tqdm
+ipywidgets
