@@ -34,7 +34,7 @@ jobs:
           pip install torchvision
 
       - name: Build the Jupyter Book
-        run: jupyter-book build .
+        run: jupyter-book build mybook
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
