@@ -25,8 +25,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install jupyter-book ghp-import
-          pip install numpy
-          pip install torch torchvision torchaudio
+          pip install -r requirements.txt
           
 
       - name: Build the book (render notebooks only)
