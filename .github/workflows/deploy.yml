@@ -28,8 +28,8 @@ jobs:
           pip install -r requirements.txt
           
 
-      - name: Build the book (render notebooks only)
-        run: jupyter-book build mybook
+      - name: Build the book (use pre-executed notebooks)
+        run: jupyter-book build mybook --no-execute
 
       - name: Disable Jekyll
         run: touch mybook/_build/html/.nojekyll
