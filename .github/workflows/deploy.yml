@@ -23,24 +23,18 @@ jobs:
 
       - name: Install dependencies
         run: |
-          # Install core tools
           pip install --upgrade pip
           pip install jupyter-book ghp-import
-          # Install any custom dependencies required by your notebooks
           pip install -r requirements.txt
           
 
-      - name: Build the book (skipping execution via _config.yml)
-        # 💡 The 'execute_notebooks: cache' setting in your _config.yml 
-        # ensures no code is run during this build step, resolving KeyboardInterrupts.
+      - name: Build the book (render notebooks only)
         run: jupyter-book build mybook
 
       - name: Disable Jekyll
-        # Creates an empty file to tell GitHub Pages not to process the site with Jekyll
         run: touch mybook/_build/html/.nojekyll
 
       - name: Deploy to GitHub Pages
-        # Uses ghp-import to push the built HTML to the gh-pages branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

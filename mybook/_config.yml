@@ -5,10 +5,9 @@ title: ChrisJallaine's Deep Learning Portfolio
 author: Chris Jallaine
 logo: logo1.gif 
 
-# Execution Control
-# 'cache' tells Jupyter Book to use saved outputs and never run the code during the build.
-execute:
-  execute_notebooks: 'cache'
+# Turn off notebook execution
+execution:
+  execute_notebooks: off
 
 # Define the name of the latex output file for PDF builds
 latex:
