@@ -5,9 +5,10 @@ title: ChrisJallaine's Deep Learning Portfolio
 author: Chris Jallaine
 logo: logo1.gif 
 
-# Turn off notebook execution
-execution:
-  execute_notebooks: off
+# Control notebook execution (RECOMMENDED FIX)
+# 'cache' tells Jupyter Book to use saved outputs and never run the code.
+execute:
+  execute_notebooks: 'cache'
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -28,3 +29,4 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  

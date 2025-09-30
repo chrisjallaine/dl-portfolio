@@ -29,7 +29,7 @@ jobs:
           
 
       - name: Build the book (use pre-executed notebooks)
-        run: jupyter-book build mybook --no-execute
+        run: jupyter-book build mybook
 
       - name: Disable Jekyll
         run: touch mybook/_build/html/.nojekyll
