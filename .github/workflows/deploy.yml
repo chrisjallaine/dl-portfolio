@@ -24,10 +24,10 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install jupyter-book ghp-import
+          pip install jupyter-book ghp-import numpy
 
       - name: Build the book (render notebooks only)
-        run: jupyter-book build mybook/
+        run: jupyter-book build mybook/z
 
       - name: Disable Jekyll
         run: touch mybook/_build/html/.nojekyll
