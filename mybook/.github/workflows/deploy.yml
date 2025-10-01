@@ -30,7 +30,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install jupyter-book ghp-import
-          pip install -r requirements.txt
+          pip install -r mybook/requirements.txt
           pip install torchvision
           pip install torch
           pip install numpy
