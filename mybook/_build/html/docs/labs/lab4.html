@@ -442,6 +442,21 @@ Finally, we tested the model by comparing its predicted output with the actual t
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># ============================</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># 1. Import Libraries</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># ============================</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -555,92 +570,16 @@ Finally, we tested the model by comparing its predicted output with the actual t
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">yb</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="c1"># Backward pass</span>
-<span class="ne">---&gt; </span><span class="mi">15</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-
-<span class="nn">File /opt/anaconda3/lib/python3.12/site-packages/torch/_compile.py:32,</span> in <span class="ni">_disable_dynamo.&lt;locals&gt;.inner</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span>     <span class="n">disable_fn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">_dynamo</span><span class="o">.</span><span class="n">disable</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">recursive</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span>     <span class="n">fn</span><span class="o">.</span><span class="n">__dynamo_disable</span> <span class="o">=</span> <span class="n">disable_fn</span>
-<span class="ne">---&gt; </span><span class="mi">32</span> <span class="k">return</span> <span class="n">disable_fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/anaconda3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py:745,</span> in <span class="ni">DisableContext.__call__.&lt;locals&gt;._fn</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">741</span> <span class="n">prior_skip_guard_eval_unsafe</span> <span class="o">=</span> <span class="n">set_skip_guard_eval_unsafe</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">742</span>     <span class="n">_is_skip_guard_eval_unsafe_stance</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">743</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">744</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">745</span>     <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">746</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">747</span>     <span class="n">_maybe_set_eval_frame</span><span class="p">(</span><span class="n">prior</span><span class="p">)</span>
-
-<span class="nn">File /opt/anaconda3/lib/python3.12/site-packages/torch/optim/optimizer.py:970,</span> in <span class="ni">Optimizer.zero_grad</span><span class="nt">(self, set_to_none)</span>
-<span class="g g-Whitespace">    </span><span class="mi">967</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">968</span>     <span class="n">per_device_and_dtype_grads</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">--&gt; </span><span class="mi">970</span> <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">profiler</span><span class="o">.</span><span class="n">record_function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_zero_grad_profile_name</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">971</span>     <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_groups</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">972</span>         <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;params&quot;</span><span class="p">]:</span>
-
-<span class="nn">File /opt/anaconda3/lib/python3.12/site-packages/torch/autograd/profiler.py:769,</span> in <span class="ni">record_function.__exit__</span><span class="nt">(self, exc_type, exc_value, traceback)</span>
-<span class="g g-Whitespace">    </span><span class="mi">767</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">is_scripting</span><span class="p">():</span>
-<span class="g g-Whitespace">    </span><span class="mi">768</span>     <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">DisableTorchFunctionSubclass</span><span class="p">():</span>
-<span class="ne">--&gt; </span><span class="mi">769</span>         <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">profiler</span><span class="o">.</span><span class="n">_record_function_exit</span><span class="o">.</span><span class="n">_RecordFunction</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">770</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">771</span>     <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">profiler</span><span class="o">.</span><span class="n">_record_function_exit</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
-
-<span class="nn">File /opt/anaconda3/lib/python3.12/site-packages/torch/_ops.py:947,</span> in <span class="ni">TorchBindOpOverload.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">946</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">947</span>     <span class="k">if</span> <span class="n">_must_dispatch_in_python</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">948</span>         <span class="c1"># When any inputs are FakeScriptObject, we need to</span>
-<span class="g g-Whitespace">    </span><span class="mi">949</span>         <span class="c1"># skip c++ dispatcher and dispatch in python through _get_dispatch of python_dispatcher</span>
-<span class="g g-Whitespace">    </span><span class="mi">950</span>         <span class="c1"># because C++ dispatcher will check the schema and cannot recognize FakeScriptObject.</span>
-<span class="g g-Whitespace">    </span><span class="mi">951</span>         <span class="c1">#</span>
-<span class="g g-Whitespace">    </span><span class="mi">952</span>         <span class="c1"># Note:</span>
-<span class="g g-Whitespace">    </span><span class="mi">953</span>         <span class="c1"># 1. We only register the torchbind op temporarily as effectful op because we only want</span>
-<span class="g g-Whitespace">    </span><span class="mi">954</span>         <span class="c1">#    the effect token functionalization logic to be applied during tracing. Otherwise, the behavior</span>
-<span class="g g-Whitespace">    </span><span class="mi">955</span>         <span class="c1">#    of the eagerly executing the op might change after tracing.</span>
-<span class="g g-Whitespace">    </span><span class="mi">956</span>         <span class="c1"># 2. We don&#39;t want to register the op as effectful for all torchbind ops in ctor because this might</span>
-<span class="g g-Whitespace">    </span><span class="mi">957</span>         <span class="c1">#    cause unexpected behavior for some autograd.profiler ops e.g. profiler._record_function_exit._RecordFunction.</span>
-<span class="g g-Whitespace">    </span><span class="mi">958</span>         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_register_as_effectful_op_temporarily</span><span class="p">():</span>
-<span class="g g-Whitespace">    </span><span class="mi">959</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dispatch_in_python</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fallthrough_keys</span><span class="p">())</span>
-
-<span class="nn">File /opt/anaconda3/lib/python3.12/site-packages/torch/_ops.py:1001,</span> in <span class="ni">_must_dispatch_in_python</span><span class="nt">(args, kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1000</span> <span class="k">def</span><span class="w"> </span><span class="nf">_must_dispatch_in_python</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1001</span>     <span class="k">return</span> <span class="n">pytree</span><span class="o">.</span><span class="n">tree_any</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1002</span>         <span class="k">lambda</span> <span class="n">obj</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1003</span>             <span class="n">obj</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">fake_class_registry</span><span class="o">.</span><span class="n">FakeScriptObject</span>
-<span class="g g-Whitespace">   </span><span class="mi">1004</span>         <span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1005</span>         <span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1006</span>     <span class="p">)</span>
-
-<span class="nn">File /opt/anaconda3/lib/python3.12/site-packages/torch/utils/_pytree.py:1230,</span> in <span class="ni">tree_any</span><span class="nt">(pred, tree, is_leaf)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1224</span> <span class="k">def</span><span class="w"> </span><span class="nf">tree_any</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1225</span>     <span class="n">pred</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">bool</span><span class="p">],</span>
-<span class="g g-Whitespace">   </span><span class="mi">1226</span>     <span class="n">tree</span><span class="p">:</span> <span class="n">PyTree</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1227</span>     <span class="n">is_leaf</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">PyTree</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1228</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1229</span>     <span class="n">flat_args</span> <span class="o">=</span> <span class="n">tree_iter</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">is_leaf</span><span class="o">=</span><span class="n">is_leaf</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1230</span>     <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">flat_args</span><span class="p">))</span>
-
-<span class="nn">File /opt/anaconda3/lib/python3.12/site-packages/torch/utils/_pytree.py:925,</span> in <span class="ni">tree_iter</span><span class="nt">(tree, is_leaf)</span>
-<span class="g g-Whitespace">    </span><span class="mi">923</span>     <span class="k">yield</span> <span class="n">tree</span>
-<span class="g g-Whitespace">    </span><span class="mi">924</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">925</span>     <span class="n">node_type</span> <span class="o">=</span> <span class="n">_get_node_type</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">926</span>     <span class="n">flatten_fn</span> <span class="o">=</span> <span class="n">SUPPORTED_NODES</span><span class="p">[</span><span class="n">node_type</span><span class="p">]</span><span class="o">.</span><span class="n">flatten_fn</span>
-<span class="g g-Whitespace">    </span><span class="mi">927</span>     <span class="n">child_pytrees</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">flatten_fn</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
-
-<span class="nn">File /opt/anaconda3/lib/python3.12/site-packages/torch/utils/_pytree.py:692,</span> in <span class="ni">_get_node_type</span><span class="nt">(tree)</span>
-<span class="g g-Whitespace">    </span><span class="mi">688</span>         <span class="k">return</span> <span class="kc">False</span>
-<span class="g g-Whitespace">    </span><span class="mi">689</span>     <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">692</span> <span class="k">def</span><span class="w"> </span><span class="nf">_get_node_type</span><span class="p">(</span><span class="n">tree</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">693</span>     <span class="k">if</span> <span class="n">_is_namedtuple_instance</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">694</span>         <span class="k">return</span> <span class="n">namedtuple</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [100/1000], Loss: 0.4483
+Epoch [200/1000], Loss: 0.2378
+Epoch [300/1000], Loss: 0.1523
+Epoch [400/1000], Loss: 1.6435
+Epoch [500/1000], Loss: 0.2591
+Epoch [600/1000], Loss: 0.1823
+Epoch [700/1000], Loss: 0.4823
+Epoch [800/1000], Loss: 0.1805
+Epoch [900/1000], Loss: 0.0972
+Epoch [1000/1000], Loss: 0.2740
 </pre></div>
 </div>
 </div>

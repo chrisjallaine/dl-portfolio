@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Install requirements.txt before build",
+			"type": "shell",
+			"command": "pip install -r requirements.txt && jupyter-book build mybook/",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}
