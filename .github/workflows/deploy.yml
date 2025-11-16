@@ -38,6 +38,13 @@ jobs:
       - name: Build the Jupyter Book
         run: jupyter-book build mybook
 
+      - name: List built docs directory (diagnostic)
+        run: |
+          echo "Listing mybook/_build/html/docs (if present):"
+          ls -la mybook/_build/html/docs || true
+          echo "Find any PDFs under the built html:" 
+          find mybook/_build/html -type f -name "*.pdf" -print || true
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
