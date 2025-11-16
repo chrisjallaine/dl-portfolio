@@ -11,8 +11,12 @@ chapters:
       - file: docs/labs/lab4.ipynb
       - file: docs/labs/lab5.ipynb
       - file: docs/labs/lab6.ipynb
-      - file: docs/labs/blog.html
-        type: page  # tells Jupyter Book this is a page
+      - title: Lab Blog
+        type: page
+        content: |
+          ```{raw} html
+          <iframe src="docs/labs/blog.html" width="100%" height="800px" frameborder="0"></iframe>
+          ```
 
   - file: docs/projects/README.md
     title: 🗂️ Projects
@@ -22,11 +26,19 @@ chapters:
   - file: docs/ProjectDeliverables/README.md
     title: 📦 Project Deliverables
     sections:
-      - file: docs/ProjectDeliverables/file1.pdf
+      - title: Report 
         type: page
+        content: |
+          <iframe src="docs/ProjectDeliverables/file1.pdf" width="100%" height="800px">
+          This browser does not support PDFs. Download: <a href="docs/ProjectDeliverables/file1.pdf">here</a>
+          </iframe>
 
   - file: docs/NarrativeReport/README.md
     title: 📝 Narrative Report
     sections:
-      - file: docs/NarrativeReport/report1.pdf
+      - title: Narrative Report 
         type: page
+        content: |
+          <iframe src="docs/NarrativeReport/report1.pdf" width="100%" height="800px">
+          This browser does not support PDFs. Download: <a href="docs/NarrativeReport/report1.pdf">here</a>
+          </iframe>
