@@ -29,8 +29,8 @@ chapters:
       - title: Report 
         type: page
         content: |
-          <iframe src="docs/ProjectDeliverables/file1.pdf" width="100%" height="800px">
-          This browser does not support PDFs. Download: <a href="docs/ProjectDeliverables/file1.pdf">here</a>
+          <iframe src="file1.pdf" width="100%" height="800px">
+          This browser does not support PDFs. Download: <a href="file1.pdf">here</a>
           </iframe>
 
   - file: docs/NarrativeReport/README.md
@@ -39,6 +39,6 @@ chapters:
       - title: Narrative Report 
         type: page
         content: |
-          <iframe src="docs/NarrativeReport/report1.pdf" width="100%" height="800px">
-          This browser does not support PDFs. Download: <a href="docs/NarrativeReport/report1.pdf">here</a>
+          <iframe src="report1.pdf" width="100%" height="800px">
+          This browser does not support PDFs. Download: <a href="report1.pdf">here</a>
           </iframe>

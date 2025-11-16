@@ -28,3 +28,7 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  # Copy the `docs` folder (which contains PDFs) into the built HTML output
+  # so assets like PDFs are available at `/docs/...` on the built site.
+  extra_path:
+    - docs
