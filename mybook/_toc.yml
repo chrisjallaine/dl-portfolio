@@ -12,6 +12,7 @@ chapters:
       - file: docs/labs/lab5.ipynb
       - file: docs/labs/lab6.ipynb
       - file: docs/labs/blog.html
+        type: page  # tells Jupyter Book this is a page
 
   - file: docs/projects/README.md
     title: 🗂️ Projects
@@ -22,8 +23,10 @@ chapters:
     title: 📦 Project Deliverables
     sections:
       - file: docs/ProjectDeliverables/file1.pdf
+        type: page
 
   - file: docs/NarrativeReport/README.md
     title: 📝 Narrative Report
     sections:
       - file: docs/NarrativeReport/report1.pdf
+        type: page
