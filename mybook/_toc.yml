@@ -23,10 +23,10 @@ chapters:
     title: 📦 Project Deliverables
     sections:
       - file: docs/ProjectDeliverables/file1_view
-        title: Project Report
+        title: Report 1
 
   - file: docs/NarrativeReport/README
     title: 📝 Narrative Report
     sections:
       - file: docs/NarrativeReport/report1_view
-        title: Narrative Report
+        title: Narrative Report 1

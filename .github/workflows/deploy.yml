@@ -38,12 +38,14 @@ jobs:
       - name: Build the Jupyter Book
         run: jupyter-book build mybook
 
-      - name: List built docs directory (diagnostic)
+      - name: Copy assets (PDFs and HTML) to build directory
         run: |
-          echo "Listing mybook/_build/html/docs (if present):"
-          ls -la mybook/_build/html/docs || true
-          echo "Find any PDFs under the built html:" 
-          find mybook/_build/html -type f -name "*.pdf" -print || true
+          mkdir -p mybook/_build/html/docs/ProjectDeliverables
+          mkdir -p mybook/_build/html/docs/NarrativeReport
+          mkdir -p mybook/_build/html/docs/labs
+          cp mybook/docs/ProjectDeliverables/file1.pdf mybook/_build/html/docs/ProjectDeliverables/
+          cp mybook/docs/NarrativeReport/report1.pdf mybook/_build/html/docs/NarrativeReport/
+          cp mybook/docs/labs/blog.html mybook/_build/html/docs/labs/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
