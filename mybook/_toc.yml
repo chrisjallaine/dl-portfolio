@@ -14,11 +14,6 @@ chapters:
       - file: docs/labs/blog_view
         title: Lab Blog
 
-  - file: docs/projects/README
-    title: 🗂️ Projects
-    sections:
-      - glob: docs/projects/project*.ipynb
-
   - file: docs/ProjectDeliverables/README
     title: 📦 Project Deliverables
     sections:
