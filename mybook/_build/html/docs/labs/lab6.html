@@ -181,11 +181,6 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">💻 Laboratory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="lab1.html">Foundational Concept of Deep Learning: Lab1</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="lab2.html">Understanding Deep Learning : Lab 2</a></li>
-
-
 <li class="toctree-l2"><a class="reference internal" href="lab3.html">Understanding Deep Learning : Lab 3</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="lab4.html">Understanding Deep Learning : Lab 4</a></li>
@@ -196,6 +191,14 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../projects/README.html">🗂️ Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ProjectDeliverables/README.html">📦 Project Deliverables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ProjectDeliverables/file1_view.html">Project Report</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../NarrativeReport/README.html">📝 Narrative Report</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../NarrativeReport/report1_view.html">Narrative Report</a></li>
 </ul>
 </details></li>
 </ul>
@@ -395,6 +398,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-diagram-would-give-us">Understanding the Diagram Would Give Us:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-the-cnn-model-into-a-full-pytorch-training-pipeline">Integrating the CNN model into a full PyTorch training pipeline:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-error-persists-on-rendered-version-see-atthached-image-for-result">If Error Persists on Rendered Version, see atthached image for result:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observations">Observations:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-and-inference">Conclusion and Inference</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions-learnings">Conclusions / Learnings</a><ul class="nav section-nav flex-column">
@@ -412,10 +416,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="laboratory-activity-6">
+  <section id="laboratory-activity-6">
 <h1>Laboratory Activity 6<a class="headerlink" href="#laboratory-activity-6" title="Link to this heading">#</a></h1>
 <p>Here is the given problem setup:</p>
-<img src="https://i.postimg.cc/vMHj5gq1/image.png" width="1200">
+<a class="reference internal image-reference" href="https://i.postimg.cc/vMHj5gq1/image.png"><img alt="https://i.postimg.cc/vMHj5gq1/image.png" src="https://i.postimg.cc/vMHj5gq1/image.png" style="width: 1200px;" />
+</a>
 <section id="understanding-the-diagram-would-give-us">
 <h2>Understanding the Diagram Would Give Us:<a class="headerlink" href="#understanding-the-diagram-would-give-us" title="Link to this heading">#</a></h2>
 <p>From the figure:</p>
@@ -467,21 +472,6 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># ----------------------------</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># Implementing in PyTorch</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># ----------------------------</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;torch&#39;
 </pre></div>
 </div>
 </div>
@@ -614,10 +604,34 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 9.91M/9.91M [00:00&lt;00:00, 18.0MB/s]
-100%|██████████| 28.9k/28.9k [00:00&lt;00:00, 488kB/s]
-100%|██████████| 1.65M/1.65M [00:00&lt;00:00, 4.46MB/s]
-100%|██████████| 4.54k/4.54k [00:00&lt;00:00, 8.32MB/s]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># ----------------------------</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># Load MNIST dataset</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># ----------------------------</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">train_data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">test_data</span>  <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">train_set</span><span class="p">,</span> <span class="n">val_set</span> <span class="o">=</span> <span class="n">random_split</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="p">[</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">])</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/torchvision/datasets/mnist.py:100,</span> in <span class="ni">MNIST.__init__</span><span class="nt">(self, root, train, transform, target_transform, download)</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="k">return</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span> <span class="k">if</span> <span class="n">download</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">100</span>     <span class="bp">self</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_exists</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Dataset not found. You can use download=True to download it&quot;</span><span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/torchvision/datasets/mnist.py:197,</span> in <span class="ni">MNIST.download</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span> <span class="k">for</span> <span class="n">mirror</span><span class="p">,</span> <span class="n">err</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mirrors</span><span class="p">,</span> <span class="n">errors</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>     <span class="n">s</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Tried </span><span class="si">{</span><span class="n">mirror</span><span class="si">}</span><span class="s2">, got:</span><span class="se">\n</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">197</span> <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="ne">RuntimeError</span>: Error downloading train-images-idx3-ubyte.gz:
+<span class="n">Tried</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ossci</span><span class="o">-</span><span class="n">datasets</span><span class="o">.</span><span class="n">s3</span><span class="o">.</span><span class="n">amazonaws</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mnist</span><span class="o">/</span><span class="p">,</span> <span class="n">got</span><span class="p">:</span>
+<span class="o">&lt;</span><span class="n">urlopen</span> <span class="n">error</span> <span class="p">[</span><span class="n">SSL</span><span class="p">:</span> <span class="n">CERTIFICATE_VERIFY_FAILED</span><span class="p">]</span> <span class="n">certificate</span> <span class="n">verify</span> <span class="n">failed</span><span class="p">:</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">get</span> <span class="n">local</span> <span class="n">issuer</span> <span class="n">certificate</span> <span class="p">(</span><span class="n">_ssl</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">1032</span><span class="p">)</span><span class="o">&gt;</span>
+<span class="n">Tried</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">yann</span><span class="o">.</span><span class="n">lecun</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">exdb</span><span class="o">/</span><span class="n">mnist</span><span class="o">/</span><span class="p">,</span> <span class="n">got</span><span class="p">:</span>
+<span class="n">HTTP</span> <span class="n">Error</span> <span class="mi">404</span><span class="p">:</span> <span class="n">Not</span> <span class="n">Found</span>
 </pre></div>
 </div>
 </div>
@@ -758,6 +772,10 @@ Epoch [5/5] Training Loss: 0.0237 Validation Loss: 0.0391 Validation Accuracy: 0
 </div>
 </div>
 </div>
+</section>
+<section id="if-error-persists-on-rendered-version-see-atthached-image-for-result">
+<h2>If Error Persists on Rendered Version, see atthached image for result:<a class="headerlink" href="#if-error-persists-on-rendered-version-see-atthached-image-for-result" title="Link to this heading">#</a></h2>
+<p><img alt="Epoch result" src="../../_images/trainloop.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----------------------------</span>
@@ -964,6 +982,7 @@ The accuracy curve on the unseen data shows strong overall performance with a fi
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-diagram-would-give-us">Understanding the Diagram Would Give Us:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-the-cnn-model-into-a-full-pytorch-training-pipeline">Integrating the CNN model into a full PyTorch training pipeline:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-error-persists-on-rendered-version-see-atthached-image-for-result">If Error Persists on Rendered Version, see atthached image for result:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observations">Observations:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-and-inference">Conclusion and Inference</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions-learnings">Conclusions / Learnings</a><ul class="nav section-nav flex-column">

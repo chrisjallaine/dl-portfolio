@@ -37,24 +37,52 @@ Traceback (most recent call last):
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 # ----------------------------
-# Implementing in PyTorch
+# Load MNIST dataset
 # ----------------------------
 
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
+transform = transforms.ToTensor()
+
+train_data = datasets.MNIST(root="data", train=True, download=True, transform=transform)
+test_data  = datasets.MNIST(root="data", train=False, download=True, transform=transform)
+
+train_set, val_set = random_split(train_data, [50000, 10000])
+
+# Data loaders:
+batch_size = 64
+train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
+val_loader   = DataLoader(val_set, batch_size=batch_size, shuffle=False)
+test_loader  = DataLoader(test_data, batch_size=batch_size, shuffle=False)
+
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
-[31mModuleNotFoundError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 5[39m
+[31mRuntimeError[39m                              Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 7[39m
 [32m      1[39m [38;5;66;03m# ----------------------------[39;00m
-[32m      2[39m [38;5;66;03m# Implementing in PyTorch[39;00m
+[32m      2[39m [38;5;66;03m# Load MNIST dataset[39;00m
 [32m      3[39m [38;5;66;03m# ----------------------------[39;00m
-[32m----> [39m[32m5[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mtorch[39;00m
-[32m      6[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mtorch[39;00m[34;01m.[39;00m[34;01mnn[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnn[39;00m
-[32m      7[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mtorch[39;00m[34;01m.[39;00m[34;01mnn[39;00m[34;01m.[39;00m[34;01mfunctional[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mF[39;00m
+[32m      5[39m transform = transforms.ToTensor()
+[32m----> [39m[32m7[39m train_data = [43mdatasets[49m[43m.[49m[43mMNIST[49m[43m([49m[43mroot[49m[43m=[49m[33;43m"[39;49m[33;43mdata[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[43mtrain[49m[43m=[49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m[43m [49m[43mdownload[49m[43m=[49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m[43m [49m[43mtransform[49m[43m=[49m[43mtransform[49m[43m)[49m
+[32m      8[39m test_data  = datasets.MNIST(root=[33m"[39m[33mdata[39m[33m"[39m, train=[38;5;28;01mFalse[39;00m, download=[38;5;28;01mTrue[39;00m, transform=transform)
+[32m     10[39m train_set, val_set = random_split(train_data, [[32m50000[39m, [32m10000[39m])
 
-[31mModuleNotFoundError[39m: No module named 'torch'
+[36mFile [39m[32m/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/torchvision/datasets/mnist.py:100[39m, in [36mMNIST.__init__[39m[34m(self, root, train, transform, target_transform, download)[39m
+[32m     97[39m     [38;5;28;01mreturn[39;00m
+[32m     99[39m [38;5;28;01mif[39;00m download:
+[32m--> [39m[32m100[39m     [38;5;28;43mself[39;49m[43m.[49m[43mdownload[49m[43m([49m[43m)[49m
+[32m    102[39m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28mself[39m._check_exists():
+[32m    103[39m     [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m([33m"[39m[33mDataset not found. You can use download=True to download it[39m[33m"[39m)
+
+[36mFile [39m[32m/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/torchvision/datasets/mnist.py:197[39m, in [36mMNIST.download[39m[34m(self)[39m
+[32m    195[39m [38;5;28;01mfor[39;00m mirror, err [38;5;129;01min[39;00m [38;5;28mzip[39m([38;5;28mself[39m.mirrors, errors):
+[32m    196[39m     s += [33mf[39m[33m"[39m[33mTried [39m[38;5;132;01m{[39;00mmirror[38;5;132;01m}[39;00m[33m, got:[39m[38;5;130;01m\n[39;00m[38;5;132;01m{[39;00m[38;5;28mstr[39m(err)[38;5;132;01m}[39;00m[38;5;130;01m\n[39;00m[33m"[39m
+[32m--> [39m[32m197[39m [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m(s)
+
+[31mRuntimeError[39m: Error downloading train-images-idx3-ubyte.gz:
+Tried https://ossci-datasets.s3.amazonaws.com/mnist/, got:
+<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>
+Tried http://yann.lecun.com/exdb/mnist/, got:
+HTTP Error 404: Not Found
+
 
