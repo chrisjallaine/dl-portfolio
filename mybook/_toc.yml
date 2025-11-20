@@ -1,44 +1,32 @@
 format: jb-book
-root: intro
+root: intro  
 
 chapters:
-  - file: docs/labs/README.md
+  - file: docs/labs/README
     title: 💻 Laboratory
     sections:
-      - file: docs/labs/lab1.ipynb
-      - file: docs/labs/lab2.ipynb
-      - file: docs/labs/lab3.ipynb
-      - file: docs/labs/lab4.ipynb
-      - file: docs/labs/lab5.ipynb
-      - file: docs/labs/lab6.ipynb
-      - title: Lab Blog
-        type: page
-        content: |
-          ```{raw} html
-          <iframe src="docs/labs/blog.html" width="100%" height="800px" frameborder="0"></iframe>
-          ```
+      - file: docs/labs/lab1
+      - file: docs/labs/lab2
+      - file: docs/labs/lab3
+      - file: docs/labs/lab4
+      - file: docs/labs/lab5
+      - file: docs/labs/lab6
+      - file: docs/labs/blog
+        title: Lab Blog
 
-  - file: docs/projects/README.md
+  - file: docs/projects/README
     title: 🗂️ Projects
     sections:
       - glob: docs/projects/project*.ipynb
 
-  - file: docs/ProjectDeliverables/README.md
+  - file: docs/ProjectDeliverables/README
     title: 📦 Project Deliverables
     sections:
-      - title: Report 
-        type: page
-        content: |
-          <iframe src="file1.pdf" width="100%" height="800px">
-          This browser does not support PDFs. Download: <a href="file1.pdf">here</a>
-          </iframe>
+      - file: docs/ProjectDeliverables/file1_view
+        title: Project Report
 
-  - file: docs/NarrativeReport/README.md
+  - file: docs/NarrativeReport/README
     title: 📝 Narrative Report
     sections:
-      - title: Narrative Report 
-        type: page
-        content: |
-          <iframe src="report1.pdf" width="100%" height="800px">
-          This browser does not support PDFs. Download: <a href="report1.pdf">here</a>
-          </iframe>
+      - file: docs/NarrativeReport/report1_view
+        title: Narrative Report

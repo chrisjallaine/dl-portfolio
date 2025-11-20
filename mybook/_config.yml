@@ -1,6 +1,4 @@
 # Book settings
-# Learn more at https://jupyterbook.org/customize/config.html
-
 title: ChrisJallaine's Deep Learning Portfolio
 author: Chris Jallaine
 logo: logo1.gif 
@@ -20,15 +18,16 @@ bibtex_bibfiles:
 
 repository:
   url: https://github.com/chrisjallaine/dl-portfolio.git
-  path_to_book: mybook   
+  path_to_book: docs   # Changed from mybook to docs
   branch: main  
 
 # Add GitHub buttons to your book
-# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
   use_issues_button: true
   use_repository_button: true
-  # Copy the `docs` folder (which contains PDFs) into the built HTML output
-  # so assets like PDFs are available at `/docs/...` on the built site.
-  extra_path:
-    - docs
+
+# Parse markdown files with myst extensions
+parse:
+  myst_enable_extensions:
+    - html_image
+    - colon_fence
