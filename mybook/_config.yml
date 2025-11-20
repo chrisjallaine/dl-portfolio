@@ -18,7 +18,7 @@ bibtex_bibfiles:
 
 repository:
   url: https://github.com/chrisjallaine/dl-portfolio.git
-  path_to_book: docs   # Changed from mybook to docs
+  path_to_book: mybook   # This is correct!
   branch: main  
 
 # Add GitHub buttons to your book
@@ -26,7 +26,7 @@ html:
   use_issues_button: true
   use_repository_button: true
 
-# Parse markdown files with myst extensions
+# Parse markdown with myst extensions
 parse:
   myst_enable_extensions:
     - html_image

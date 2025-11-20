@@ -1,18 +1,14 @@
 format: jb-book
-root: intro  
+root: intro
 
 chapters:
   - file: docs/labs/README
     title: 💻 Laboratory
     sections:
-      - file: docs/labs/lab1
-      - file: docs/labs/lab2
       - file: docs/labs/lab3
       - file: docs/labs/lab4
       - file: docs/labs/lab5
       - file: docs/labs/lab6
-      - file: docs/labs/blog
-        title: Lab Blog
 
   - file: docs/projects/README
     title: 🗂️ Projects
