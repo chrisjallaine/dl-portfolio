@@ -19,9 +19,13 @@ chapters:
     sections:
       - file: docs/ProjectDeliverables/file1_view
         title: Report 1
+      - file: docs/ProjectDeliverables/file2_view
+        title: Report 2
 
   - file: docs/NarrativeReport/README
     title: 📝 Narrative Report
     sections:
       - file: docs/NarrativeReport/report1_view
         title: Narrative Report 1
+      - file: docs/NarrativeReport/report2_view
+        title: Narrative Report 2
