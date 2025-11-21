@@ -1,36 +1,41 @@
 # Book settings
 title: ChrisJallaine's Deep Learning Portfolio
 author: Chris Jallaine
-logo: logo1.gif 
+logo: logo1.gif
 
-# Turn off notebook execution
+# Execution settings
 execution:
   execute_notebooks: off
 
-# Define the name of the latex output file for PDF builds
+# PDF / LaTeX settings
 latex:
   latex_documents:
     targetname: book.tex
 
-# Add a bibtex file so that we can create citations
+# Citations
 bibtex_bibfiles:
   - references.bib
 
+# Repository settings
 repository:
   url: https://github.com/chrisjallaine/dl-portfolio.git
-  path_to_book: mybook   
-  branch: main  
+  path_to_book: mybook
+  branch: main
 
+# HTML & Navigation behavior
 html:
   use_issues_button: true
   use_repository_button: true
   extra_path:
     - docs
+  collapse_navigation: false     # keeps sidebar fully expanded
+  navigation_depth: 4            # ensures sections stay visible
 
+# Parsing options
 parse:
   myst_enable_extensions:
     - html_image
     - colon_fence
 
-# Tell Jupyter Book to include PDFs in the build
+# Include files
 exclude_patterns: []
