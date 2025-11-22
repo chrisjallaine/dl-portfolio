@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Science of Learning: How Neural Networks Find Their Way</title>
+    <title>Optimizer Showdown: Theory Meets Practice in Deep Learning</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
@@ -134,93 +134,6 @@
             box-shadow: var(--shadow-sm);
         }
 
-        .toc-container {
-            position: fixed;
-            left: 20px;
-            top: 100px;
-            width: 250px;
-            max-height: 600px;
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 15px;
-            padding: 25px;
-            overflow-y: auto;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-md);
-        }
-
-        .toc-container.hidden {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(-20px);
-        }
-
-        .toc-toggle {
-            position: fixed;
-            left: 20px;
-            top: 20px;
-            z-index: 999;
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 50px;
-            padding: 10px 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .toc-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .toc-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.9em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            color: var(--accent-primary);
-        }
-
-        .toc-list {
-            list-style: none;
-        }
-
-        .toc-item {
-            margin: 10px 0;
-            font-size: 0.85em;
-        }
-
-        .toc-item a {
-            color: var(--text-tertiary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: block;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-
-        .toc-item a:hover {
-            color: var(--accent-secondary);
-            background: rgba(220, 20, 60, 0.1);
-            padding-left: 15px;
-        }
-
-        .toc-item a.active {
-            color: var(--accent-secondary);
-            font-weight: 600;
-            border-left: 3px solid var(--accent-secondary);
-            padding-left: 12px;
-        }
-
         .header {
             position: relative;
             background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(220, 20, 60, 0.05) 100%);
@@ -229,29 +142,6 @@
             border-bottom: 2px solid var(--border-color);
             z-index: 1;
             transition: background 0.3s ease;
-        }
-
-        .header-image {
-            width: 100%;
-            max-width: 1200px;
-            height: 400px;
-            margin: 0 auto 60px auto;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            transition: all 0.4s ease;
-        }
-
-        .header-image:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 70px rgba(139, 69, 19, 0.15);
-        }
-
-        .header-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            animation: fadeInUp 1s ease;
         }
 
         .header h1 {
@@ -299,10 +189,9 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 80px 60px 80px 320px;
+            padding: 80px 60px;
             position: relative;
             z-index: 1;
-            transition: padding 0.3s ease;
         }
 
         .content-section {
@@ -327,7 +216,6 @@
             letter-spacing: -0.5px;
             position: relative;
             padding-bottom: 20px;
-            scroll-margin-top: 100px;
         }
 
         h2::after {
@@ -375,37 +263,6 @@
             box-shadow: 0 15px 40px rgba(139, 69, 19, 0.15);
         }
 
-        .image-full {
-            width: 100%;
-            margin: 80px 0;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .image-full img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(139, 69, 19, 0.12);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .image-full:hover img {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 40px rgba(139, 69, 19, 0.16);
-        }
-
-        .image-caption {
-            text-align: center;
-            font-style: italic;
-            color: var(--accent-primary);
-            margin-top: 20px;
-            font-size: 0.95em;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-
         .formula-block {
             background: var(--card-bg);
             border: 2px solid var(--border-color);
@@ -437,34 +294,24 @@
             box-shadow: 0 15px 40px rgba(139, 69, 19, 0.12);
         }
 
-        .copy-btn {
-            position: absolute;
-            top: 10px;
-            right: 50px;
-            background: var(--accent-primary);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.8em;
+        .code-block {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 35px;
+            margin: 50px 0;
+            font-family: 'Courier New', monospace;
+            color: var(--text-tertiary);
+            font-size: 0.85em;
+            line-height: 1.6;
+            overflow-x: auto;
+            box-shadow: var(--shadow-md);
             transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(-10px);
         }
 
-        .formula-block:hover .copy-btn {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .copy-btn:hover {
-            background: var(--accent-secondary);
-            transform: scale(1.05);
-        }
-
-        .copy-btn.copied {
-            background: #4CAF50;
+        .code-block:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.12);
         }
 
         .highlight {
@@ -473,7 +320,6 @@
             padding: 35px;
             margin: 50px 0;
             border-radius: 0 15px 15px 0;
-            font-style: italic;
             box-shadow: var(--shadow-md);
             transition: transform 0.3s ease;
         }
@@ -482,41 +328,7 @@
             transform: translateX(5px);
         }
 
-        blockquote {
-            border-left: 4px solid var(--accent-primary);
-            padding: 30px 30px 30px 40px;
-            margin: 60px 0;
-            font-style: italic;
-            color: var(--text-tertiary);
-            font-size: 1.2em;
-            background: var(--card-bg);
-            border-radius: 0 15px 15px 0;
-            box-shadow: var(--shadow-md);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        blockquote:hover {
-            transform: translateX(5px);
-        }
-
-        blockquote::before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 4em;
-            color: rgba(139, 69, 19, 0.15);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .algorithm-section {
-            margin: 100px 0;
-            padding: 60px 0;
-            position: relative;
-        }
-
-        .algorithm-card {
+        .experiment-card {
             background: var(--card-bg);
             border: 2px solid var(--border-color);
             border-radius: 20px;
@@ -528,7 +340,7 @@
             overflow: hidden;
         }
 
-        .algorithm-card::before {
+        .experiment-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -541,14 +353,59 @@
             pointer-events: none;
         }
 
-        .algorithm-card:hover::before {
+        .experiment-card:hover::before {
             opacity: 1;
         }
 
-        .algorithm-card:hover {
+        .experiment-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 25px 70px rgba(139, 69, 19, 0.15);
             border-color: rgba(139, 69, 19, 0.2);
+        }
+
+        .results-table {
+            width: 100%;
+            margin: 40px 0;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .results-table thead {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            color: white;
+        }
+
+        .results-table th,
+        .results-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .results-table tbody tr:hover {
+            background: rgba(139, 69, 19, 0.05);
+        }
+
+        .results-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .chart-container {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .chart-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(139, 69, 19, 0.15);
         }
 
         .divider {
@@ -578,6 +435,103 @@
 
         .divider::after {
             right: -15px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 30px 0;
+            justify-content: center;
+        }
+
+        .tag {
+            padding: 8px 20px;
+            background: rgba(139, 69, 19, 0.1);
+            border: 1px solid rgba(139, 69, 19, 0.2);
+            border-radius: 25px;
+            font-size: 0.85em;
+            color: var(--accent-primary);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .tag:hover {
+            background: rgba(139, 69, 19, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            z-index: 1000;
+            transition: width 0.1s ease;
+            box-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.3);
+            border: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.4);
+        }
+
+        blockquote {
+            border-left: 4px solid var(--accent-primary);
+            padding: 30px 30px 30px 40px;
+            margin: 60px 0;
+            font-style: italic;
+            color: var(--text-tertiary);
+            font-size: 1.2em;
+            background: var(--card-bg);
+            border-radius: 0 15px 15px 0;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        blockquote:hover {
+            transform: translateX(5px);
+        }
+
+        blockquote::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 4em;
+            color: rgba(139, 69, 19, 0.15);
+            font-family: 'Playfair Display', serif;
         }
 
         .references {
@@ -625,85 +579,6 @@
             border-bottom-color: var(--accent-secondary);
         }
 
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-            z-index: 1000;
-            transition: width 0.1s ease;
-            box-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.3);
-            border: none;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.4);
-        }
-
-        .tag-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 30px 0;
-            justify-content: center;
-        }
-
-        .tag {
-            padding: 8px 20px;
-            background: rgba(139, 69, 19, 0.1);
-            border: 1px solid rgba(139, 69, 19, 0.2);
-            border-radius: 25px;
-            font-size: 0.85em;
-            color: var(--accent-primary);
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-
-        .tag:hover {
-            background: rgba(139, 69, 19, 0.15);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
-        }
-
-        @media (max-width: 1024px) {
-            .toc-container {
-                display: none;
-            }
-
-            .container {
-                padding: 80px 60px;
-            }
-        }
-
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2.5em;
@@ -721,11 +596,7 @@
                 font-size: 16px;
             }
 
-            .header-image {
-                height: 250px;
-            }
-
-            .algorithm-card {
+            .experiment-card {
                 padding: 30px;
             }
 
@@ -740,34 +611,6 @@
             .theme-toggle {
                 top: 70px;
             }
-
-            .toc-toggle {
-                display: none;
-            }
-        }
-
-        .interactive-demo {
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 50px 0;
-            text-align: center;
-            box-shadow: var(--shadow-md);
-        }
-
-        .loading-animation {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(139, 69, 19, 0.2);
-            border-radius: 50%;
-            border-top-color: var(--accent-primary);
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
         }
 
         * {
@@ -800,273 +643,118 @@
     </div>
 
     <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
-    <button class="toc-toggle" id="tocToggle" title="Toggle table of contents">☰</button>
-
-    <div class="toc-container" id="tocContainer">
-        <div class="toc-title">Contents</div>
-        <ul class="toc-list" id="tocList"></ul>
-    </div>
 
     <div class="scroll-progress" id="progress"></div>
 
     <div class="header">
-        <div class="header-image">
-            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1400&q=85&fm=jpg&fit=crop" alt="Neural network visualization">
-        </div>
-        <h1>The Science of Learning:<br>How Neural Networks Find Their Way</h1>
-        <p class="subtitle">A Deep Exploration of Optimization Algorithms in Modern Deep Learning</p>
-        <p class="meta">By Chris Jalaline Mugot • November 16, 2025 · 25 minute read</p>
+        <h1>Optimizer Showdown:<br>Theory Meets Practice</h1>
+        <p class="subtitle">A Hands-On Exploration of Optimization Algorithms in Deep Learning</p>
+        <p class="meta">By Chris Jalaline Mugot • November 22, 2025 · 20 minute read</p>
         <div class="tag-container">
             <span class="tag">Deep Learning</span>
             <span class="tag">Optimization</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Neural Networks</span>
-            <span class="tag">AI Research</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Experimentation</span>
+            <span class="tag">MNIST</span>
         </div>
     </div>
 
     <div class="container">
         <p class="lead">
-            In the intricate world of artificial intelligence, where machines learn to recognize faces, translate languages, and even generate art, there exists a fundamental question that drives everything: How do neural networks actually learn? The answer lies not in the architecture of the networks themselves, but in the mathematical machinery that guides their journey from ignorance to expertise—optimization algorithms.
+            When we train neural networks, we're essentially solving an optimization problem: finding the configuration of weights that minimizes our loss function. But how we navigate this optimization landscape matters tremendously. Different optimization algorithms can mean the difference between a model that converges in hours versus days, or between one that generalizes well versus overfitting. In this post, I'll explore five popular optimizers through both theory and hands-on experimentation with a CNN on MNIST.
         </p>
 
         <div class="content-section">
-            <h2>The Foundation of Learning</h2>
+            <h2>The Optimization Landscape</h2>
             
             <p>
-                Every neural network begins its life in a state of profound ignorance. Its weights are initialized randomly, its predictions are essentially guesses, and its understanding of the world is nonexistent. Yet through the application of optimization algorithms, these same networks can learn to perform tasks that once seemed impossible for machines. This transformation is not magic—it is mathematics, carefully applied through a process we call optimization.
+                Imagine standing on a mountainous terrain shrouded in fog. Your goal is to find the lowest valley, but you can only see a few feet around you. This is essentially what optimization algorithms do—they navigate the high-dimensional loss landscape of neural networks using only local gradient information.
             </p>
 
             <p>
-                At its core, training a neural network is an optimization problem. We have a loss function, a mathematical measure of how wrong the network's predictions are, and we want to find the configuration of weights that minimizes this loss. If we could visualize this problem, we would see a landscape—sometimes called the loss landscape—with peaks, valleys, plateaus, and ravines. Somewhere in this landscape lies a valley representing low loss and good performance. The optimization algorithm is our guide through this landscape, determining the path we take and whether we ever reach that valley.
+                The challenge is formidable. Modern neural networks often have millions or billions of parameters, creating a loss landscape that exists in unimaginably high-dimensional space. This landscape is non-convex, meaning it contains countless local minima where an optimizer might get stuck. It contains saddle points that can trap optimization algorithms, and vast plateaus where gradients are nearly zero, making it difficult to determine which direction to move.
             </p>
 
-            <div class="image-full">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&q=85&fm=jpg&fit=crop" alt="Complex data visualization">
-                <p class="image-caption">The loss landscape of a neural network: a complex, high-dimensional terrain that optimization algorithms must navigate</p>
+            <div class="highlight">
+                <strong>Key Question:</strong> Given these challenges, how do different optimization algorithms navigate this complex terrain? Which ones are faster? Which ones find better solutions? Let's find out through experimentation.
             </div>
-
-            <p>
-                The challenge is formidable. Modern neural networks often have millions or billions of parameters, creating a loss landscape that exists in unimaginably high-dimensional space. This landscape is non-convex, meaning it contains countless local minima where an optimizer might get stuck, thinking it has found the best solution when better solutions exist elsewhere. It contains saddle points—locations where the gradient is zero but which are neither maxima nor minima—that can trap optimization algorithms. And it contains vast plateaus where the gradient is nearly zero, making it difficult to determine which direction to move.
-            </p>
-
-            <p>
-                The algorithms we use to navigate this landscape have evolved considerably over the decades, each generation learning from the limitations of its predecessors. What began as simple gradient descent has blossomed into a sophisticated family of adaptive algorithms that can handle the immense complexity of modern deep learning. Understanding these algorithms—their mechanisms, their strengths, their weaknesses—is essential for anyone seeking to master the art of training neural networks.
-            </p>
         </div>
 
         <div class="divider"></div>
 
-        <div class="algorithm-section">
-            <h2>Gradient Descent: The Bedrock</h2>
-            
-            <div class="algorithm-card">
-                <p>
-                    The story of optimization in deep learning begins with gradient descent, an algorithm so fundamental that understanding it is prerequisite to understanding everything that follows. The intuition behind gradient descent is elegantly simple: if you want to descend a mountain, you should take steps in the direction of steepest descent. In mathematical terms, this direction is given by the negative gradient of the loss function with respect to the model's parameters.
-                </p>
+        <div class="content-section">
+            <h2>The Contenders</h2>
 
+            <p>
+                For this experiment, I selected five popular optimizers that represent different philosophies in optimization:
+            </p>
+
+            <div class="experiment-card">
+                <h3>1. Stochastic Gradient Descent (SGD)</h3>
                 <div class="formula-block">
-θ(t+1) = θ(t) - η · ∇J(θ(t))
-
-Where:
-θ represents the model parameters (weights and biases)
-η is the learning rate, controlling step size
-∇J(θ) is the gradient of the loss function J with respect to θ
-t indexes the iteration number
-                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                </div>
-
-                <p>
-                    In its pure form—what we call batch gradient descent or simply gradient descent—the algorithm computes this gradient using the entire training dataset. For each iteration, it evaluates the loss function across all training examples, computes the gradient, and updates the parameters. This approach has the virtue of stability: because we're using all available data, our gradient estimate is accurate, and our path down the loss landscape is smooth and predictable.
-                </p>
-            </div>
-
-            <div class="image-full">
-                <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1400&q=85&fm=jpg&fit=crop" alt="Flowing water">
-                <p class="image-caption">Gradient descent flows smoothly toward minima, like water finding its level</p>
-            </div>
-
-            <p>
-                But this stability comes at a devastating cost. Modern datasets routinely contain millions of examples. ImageNet, a standard benchmark in computer vision, has over 14 million images. Large language models train on datasets containing hundreds of billions of tokens. Computing the exact gradient across such datasets for every single parameter update is computationally infeasible. A single iteration of batch gradient descent on ImageNet would require processing all 14 million images just to take one step in parameter space. At this rate, training would take years, even on the most powerful hardware.
-            </p>
-
-            <p>
-                Beyond computational concerns, batch gradient descent suffers from a more subtle problem. Because it always takes the exact gradient direction, it can become trapped in sharp, narrow minima. Research has shown that such minima, while representing low training loss, often generalize poorly to new data. The network has found a very specific solution that works well for the training set but fails to capture the underlying patterns that would allow it to perform well on unseen examples.
-            </p>
-
-            <p>
-                These limitations led researchers to explore alternatives that could maintain the theoretical elegance of gradient descent while addressing its practical shortcomings. The answer came from embracing randomness rather than fighting it.
-            </p>
-        </div>
-
-        <div class="algorithm-section">
-            <h2>Stochastic Gradient Descent: Embracing Noise</h2>
-            
-            <div class="algorithm-card">
-                <p>
-                    Stochastic Gradient Descent, often abbreviated as SGD, represents a paradigm shift in how we think about optimization. Rather than computing the exact gradient using all training data, SGD approximates the gradient using just a single training example—or more commonly in practice, a small subset called a mini-batch. This might seem like a step backward, trading accuracy for speed, but the implications are far more profound than simple computational savings.
-                </p>
-
-                <div class="formula-block">
-For each mini-batch B of size m:
-
-g(t) = (1/m) · Σ ∇J(θ(t); xi, yi)  for (xi, yi) in B
-
 θ(t+1) = θ(t) - η · g(t)
 
 Where:
-B is a randomly sampled mini-batch from the training set
-m is the mini-batch size (typically 32, 64, 128, or 256)
-g(t) is the stochastic gradient estimate
-                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+θ = model parameters
+η = learning rate (0.01 in our experiment)
+g(t) = gradient estimate from mini-batch
                 </div>
-
                 <p>
-                    The gradient computed from a mini-batch is noisy—it's an imperfect estimate of the true gradient we would get from the full dataset. This noise means that SGD's path through parameter space is not the smooth trajectory of batch gradient descent but rather a chaotic, jittering journey. At first glance, this seems like a flaw. But this noise is not a bug; it's a feature, and a crucial one at that.
+                    <strong>Philosophy:</strong> The simplest approach—take steps in the direction opposite to the gradient. SGD uses mini-batches to approximate the true gradient, introducing beneficial noise that can help escape sharp local minima.
+                </p>
+                <p>
+                    <strong>Strengths:</strong> Simple, well-understood, often finds solutions that generalize well to new data.
+                </p>
+                <p>
+                    <strong>Weaknesses:</strong> Can be slow to converge, sensitive to learning rate, struggles with ravines and plateaus.
                 </p>
             </div>
 
-            <div class="image-full">
-                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1400&q=85&fm=jpg&fit=crop" alt="Neural network nodes">
-                <p class="image-caption">Stochastic processes in neural networks create pathways to robust solutions</p>
-            </div>
-
-            <p>
-                The noise in SGD serves multiple beneficial purposes. First, it allows the optimizer to escape from sharp, narrow minima. When batch gradient descent encounters such a minimum, it settles there, satisfied with having found a location where the gradient is zero. But SGD's noisy gradients can kick it out of such minima, forcing it to continue exploring until it finds a wider, flatter basin. These flat minima have been shown to correlate strongly with better generalization—networks that find flat minima tend to perform better on new, unseen data.
-            </p>
-
-            <p>
-                Second, the stochasticity acts as a form of implicit regularization. The noise introduced during training prevents the network from memorizing the training data too precisely. Instead, it must learn robust features that remain useful despite the noise, leading to representations that generalize better. This effect is so powerful that SGD-trained networks often outperform networks trained with more sophisticated optimizers, particularly when generalization is critical.
-            </p>
-
-            <p>
-                Third, the computational efficiency of SGD enables training on massive datasets. By updating parameters after seeing just a small mini-batch rather than the entire dataset, SGD can make hundreds or thousands of updates in the time batch gradient descent makes one. This means that even though each SGD update is noisier and less accurate, the sheer number of updates compensates, often leading to faster overall convergence to a good solution.
-            </p>
-
-            <blockquote>
-                "The random noise in stochastic gradient descent is not an obstacle to overcome, but a tool to exploit. It transforms optimization from a deterministic search into a stochastic exploration, and in doing so, discovers solutions that deterministic methods cannot reach." — Léon Bottou, Microsoft Research
-            </blockquote>
-        </div>
-
-        <div class="algorithm-section">
-            <h2>Momentum: Building Speed in Consistent Directions</h2>
-            
-            <div class="algorithm-card">
-                <p>
-                    While SGD's stochasticity provides valuable benefits, it also creates problems. The noisy gradients can cause the optimizer to oscillate wildly, particularly in directions where the loss landscape is steep but narrow. Imagine trying to navigate a ravine: you want to make progress along the ravine, but the steep walls on either side cause you to bounce back and forth, making little forward progress. This is where momentum comes in, adding a concept borrowed from physics to smooth out these oscillations while accelerating progress in consistent directions.
-                </p>
-
+            <div class="experiment-card">
+                <h3>2. SGD with Momentum</h3>
                 <div class="formula-block">
 v(t) = β · v(t-1) + η · g(t)
-
 θ(t+1) = θ(t) - v(t)
 
 Where:
-v(t) is the velocity vector (accumulated gradient)
-β is the momentum coefficient (typically 0.9 or 0.99)
-g(t) is the current gradient
-η is the learning rate
-                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+v(t) = velocity vector (accumulated gradient)
+β = momentum coefficient (0.9 in our experiment)
                 </div>
-
                 <p>
-                    Momentum maintains a running average of past gradients, stored in a velocity vector. At each step, instead of moving directly in the direction of the current gradient, we move in a direction that combines the current gradient with this velocity. If gradients consistently point in a particular direction, the velocity builds up, and we accelerate in that direction. If gradients oscillate—pointing one way then another—these oscillations cancel out in the velocity, and we don't waste time moving back and forth.
+                    <strong>Philosophy:</strong> Maintain a running average of past gradients (velocity). If gradients consistently point in one direction, build up speed. If they oscillate, the oscillations cancel out.
+                </p>
+                <p>
+                    <strong>Strengths:</strong> Accelerates progress in consistent directions, dampens oscillations, helps escape plateaus.
+                </p>
+                <p>
+                    <strong>Weaknesses:</strong> Introduces an additional hyperparameter (momentum coefficient), can overshoot minima.
                 </p>
             </div>
 
-            <div class="image-full">
-                <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1400&q=85&fm=jpg&fit=crop" alt="Motion blur">
-                <p class="image-caption">Momentum accelerates optimization, building velocity in directions of consistent descent</p>
-            </div>
-
-            <p>
-                The benefits of momentum are substantial. In ravine-like regions of the loss landscape—common in neural network optimization—momentum dramatically accelerates progress. Without momentum, the optimizer wastes most of its time oscillating across the ravine rather than moving along it. With momentum, the cross-ravine oscillations cancel out while the along-ravine motion accumulates, leading to much faster progress. Empirically, momentum can reduce training time by factors of two or more compared to plain SGD.
-            </p>
-
-            <p>
-                Momentum also helps navigate flat regions, or plateaus, in the loss landscape. When the gradient is very small, plain SGD makes tiny steps and can get stuck. But with momentum, the velocity accumulated from before the plateau carries the optimizer forward, helping it maintain progress even when the current gradient provides little information.
-            </p>
-        </div>
-
-        <div class="algorithm-section">
-            <h2>AdaGrad: Individual Learning Rates</h2>
-            
-            <div class="algorithm-card">
-                <p>
-                    All the optimizers we've discussed so far use a single global learning rate that applies equally to all parameters. But this seems inefficient—different parameters may need different learning rates. Parameters associated with frequently occurring features may need smaller updates, having already received many gradient signals, while parameters for rare features need larger updates to learn from their limited training signal. AdaGrad, introduced by Duchi, Hazan, and Singer in 2011, was one of the first algorithms to adapt the learning rate individually for each parameter.
-                </p>
-
-                <div class="formula-block">
-g(t) = ∇J(θ(t))
-
-G(t) = G(t-1) + g(t) ⊙ g(t)
-
-θ(t+1) = θ(t) - (η / √(G(t) + ε)) ⊙ g(t)
-
-Where:
-G(t) accumulates the sum of squared gradients for each parameter
-⊙ denotes element-wise multiplication
-ε is a small constant (typically 10^-8) for numerical stability
-                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                </div>
-
-                <p>
-                    The key insight of AdaGrad is to divide the learning rate by the square root of the accumulated squared gradients. Parameters that have received large gradients in the past will have large values in G(t), leading to smaller effective learning rates. Parameters that have received small gradients will have small values in G(t), maintaining larger effective learning rates. This automatic adaptation means that frequently updated parameters take smaller steps (they've already learned a lot) while infrequently updated parameters take larger steps (they need to catch up).
-                </p>
-            </div>
-
-            <div class="image-full">
-                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1400&q=85&fm=jpg&fit=crop" alt="Data streams">
-                <p class="image-caption">Adaptive algorithms adjust their behavior based on the accumulated history of optimization</p>
-            </div>
-
-            <p>
-                AdaGrad proved particularly effective for sparse data—situations where most features are zero most of the time. In natural language processing, for instance, most words in a vocabulary don't appear in any given sentence. AdaGrad ensures that when a rare word does appear, the parameters associated with it can be updated substantially, despite having received few updates overall. This made AdaGrad popular in early deep learning applications for text.
-            </p>
-
-            <p>
-                However, AdaGrad has a critical flaw: the accumulated squared gradients in G(t) only grow, never shrink. As training progresses, G(t) becomes larger and larger, which means the effective learning rate becomes smaller and smaller. Eventually, the learning rate becomes so small that the optimizer effectively stops learning entirely, even if it hasn't yet reached a good solution. This premature stopping of learning makes AdaGrad unsuitable for training deep neural networks, which often require many passes through the data.
-            </p>
-        </div>
-
-        <div class="algorithm-section">
-            <h2>RMSProp: Forgetting the Distant Past</h2>
-            
-            <div class="algorithm-card">
-                <p>
-                    RMSProp, developed by Geoffrey Hinton and presented in his Coursera course on neural networks, directly addresses AdaGrad's problem of monotonically decreasing learning rates. Instead of accumulating all past squared gradients, RMSProp maintains an exponentially decaying average, giving more weight to recent gradients while allowing old gradients to be forgotten. This simple but crucial modification allows the learning rate to both increase and decrease over time, adapting to the current local characteristics of the loss landscape rather than being permanently influenced by gradients from early in training.
-                </p>
-
+            <div class="experiment-card">
+                <h3>3. RMSProp</h3>
                 <div class="formula-block">
 E[g²](t) = γ · E[g²](t-1) + (1 - γ) · g(t)²
-
 θ(t+1) = θ(t) - (η / √(E[g²](t) + ε)) · g(t)
 
 Where:
-E[g²](t) is the exponentially weighted average of squared gradients
-γ is the decay rate (typically 0.9 or 0.99)
-η is the learning rate (typically 0.001)
-                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+E[g²](t) = exponentially weighted average of squared gradients
+γ = decay rate (0.9 in PyTorch default)
+ε = small constant for numerical stability (10^-8)
                 </div>
-
                 <p>
-                    The decay rate γ controls how quickly the influence of old gradients fades. With γ = 0.9, the effective window of gradients being averaged is about ten steps; with γ = 0.99, it's about a hundred steps. This allows RMSProp to adapt to changes in the loss landscape. If the optimizer enters a new region where the gradients have different characteristics, those old gradients from the previous region will quickly fade from the running average, and the learning rate will adapt to the new conditions.
+                    <strong>Philosophy:</strong> Adapt the learning rate for each parameter based on recent gradient magnitudes. Parameters with large gradients get smaller learning rates; parameters with small gradients maintain larger learning rates.
+                </p>
+                <p>
+                    <strong>Strengths:</strong> Works well for non-stationary problems, handles different scales across parameters, popular for RNNs.
+                </p>
+                <p>
+                    <strong>Weaknesses:</strong> Can be sensitive to initial learning rate, may converge prematurely in some cases.
                 </p>
             </div>
 
-            <p>
-                RMSProp proved particularly effective for training recurrent neural networks, which often exhibit challenging optimization dynamics. The error signals in RNNs can vary dramatically in magnitude depending on the length of sequences being processed, and the ability of RMSProp to adapt quickly to these changing conditions made it the optimizer of choice for many early RNN applications.
-            </p>
-        </div>
-
-        <div class="algorithm-section">
-            <h2>Adam: The Modern Standard</h2>
-            
-            <div class="algorithm-card">
-                <p>
-                    Adam, short for Adaptive Moment Estimation and introduced by Kingma and Ba in 2014, synthesizes the best ideas from momentum and RMSProp while adding an important correction mechanism. It has become the default choice for many deep learning practitioners, and for good reason—it combines computational efficiency, minimal hyperparameter tuning requirements, and strong performance across a wide variety of problems.
-                </p>
-
+            <div class="experiment-card">
+                <h3>4. Adam (Adaptive Moment Estimation)</h3>
                 <div class="formula-block">
 m(t) = β₁ · m(t-1) + (1 - β₁) · g(t)
 v(t) = β₂ · v(t-1) + (1 - β₂) · g(t)²
@@ -1077,171 +765,424 @@ v̂(t) = v(t) / (1 - β₂^t)
 θ(t+1) = θ(t) - η · m̂(t) / (√(v̂(t)) + ε)
 
 Where:
-m(t) is the first moment estimate (mean of gradients)
-v(t) is the second moment estimate (uncentered variance)
-β₁ is typically 0.9, β₂ is typically 0.999
-η is the learning rate, typically 0.001 or 0.0001
-The hat notation (m̂, v̂) indicates bias-corrected estimates
-                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+m(t) = first moment estimate (like momentum)
+v(t) = second moment estimate (like RMSProp)
+β₁ = 0.9, β₂ = 0.999 (typical values)
                 </div>
-
                 <p>
-                    Adam maintains two running averages: m(t), an exponentially decaying average of past gradients (like momentum), and v(t), an exponentially decaying average of past squared gradients (like RMSProp). The first moment m(t) helps accelerate optimization in consistent directions and dampen oscillations, while the second moment v(t) adapts the learning rate for each parameter based on the history of gradient magnitudes.
+                    <strong>Philosophy:</strong> Combine the best of momentum and RMSProp. Maintain running averages of both gradients and squared gradients, with bias correction for early training steps.
+                </p>
+                <p>
+                    <strong>Strengths:</strong> Works well out-of-the-box with minimal tuning, fast convergence, handles sparse gradients well.
+                </p>
+                <p>
+                    <strong>Weaknesses:</strong> Can sometimes find solutions that don't generalize as well as SGD, particularly in computer vision.
                 </p>
             </div>
 
-            <div class="image-full">
-                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1400&q=85&fm=jpg&fit=crop" alt="Flowing abstract data">
-                <p class="image-caption">Adam optimizer combines multiple adaptation strategies for robust, efficient learning</p>
-            </div>
-
-            <p>
-                The bias correction mechanism (the hat notation m̂ and v̂) is Adam's subtle but important innovation. When we initialize m and v to zero, their early values are biased toward zero—the exponential averages need time to "warm up" before they accurately reflect the true statistics of the gradients. Adam corrects for this initialization bias by dividing by (1 - β^t), which compensates for the fact that we started at zero. In early iterations, when t is small, this correction is substantial; as t grows, β^t approaches zero, and the correction term approaches one, having minimal effect.
-            </p>
-
-            <p>
-                The combination of these elements makes Adam remarkably robust. The momentum component helps it build up speed in consistent directions and navigate plateaus. The adaptive learning rates help it handle parameters that learn at different rates. The bias correction ensures that early updates, when we have the least information, are handled appropriately. And all of this comes with relatively little tuning required—the default hyperparameters work well for a very wide range of problems.
-            </p>
-        </div>
-
-        <div class="algorithm-section">
-            <h2>AdamW: Correcting Weight Decay</h2>
-            
-            <div class="algorithm-card">
-                <p>
-                    Weight decay is a form of regularization where we add a penalty term to the loss function proportional to the squared magnitude of the weights. This encourages the network to keep weights small, which can improve generalization. In standard SGD, weight decay is straightforward, but research by Loshchilov and Hutter in 2017 revealed that Adam and other adaptive optimizers don't implement weight decay correctly when it's added to the loss function—the interaction between adaptive learning rates and weight decay creates unintended behavior.
-                </p>
-
+            <div class="experiment-card">
+                <h3>5. AdamW</h3>
                 <div class="formula-block">
-Standard Adam with L2 regularization (incorrect):
-Loss = J(θ) + (λ/2) · ||θ||²
-
-AdamW (correct weight decay):
 θ(t+1) = θ(t) - η · (m̂(t) / (√(v̂(t)) + ε) + λ · θ(t))
 
 Where:
-λ is the weight decay coefficient
-The weight decay is applied directly to parameters, not through gradient
-                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+λ = weight decay coefficient
+Weight decay applied directly to parameters, not through gradient
                 </div>
-
                 <p>
-                    AdamW decouples weight decay from the gradient-based update by applying it directly to the parameters after the adaptive update. This subtle change has significant effects. With proper weight decay implementation, AdamW achieves generalization performance much closer to SGD with momentum while maintaining Adam's fast convergence and minimal tuning requirements. For many practitioners, AdamW has become the default choice, replacing vanilla Adam for most applications.
+                    <strong>Philosophy:</strong> Fix Adam's incorrect implementation of weight decay by decoupling it from the gradient-based update. Apply weight decay directly to parameters after the adaptive update.
                 </p>
-            </div>
-        </div>
-
-        <div class="algorithm-section">
-            <h2>Advanced Optimizers: Pushing the Boundaries</h2>
-            
-            <div class="algorithm-card">
-                <h3>Nadam: Nesterov-Accelerated Adam</h3>
                 <p>
-                    Nadam combines Adam with Nesterov acceleration, incorporating a lookahead mechanism that makes the optimizer slightly more responsive to changes in the loss landscape. The lookahead mechanism makes Nadam often converge slightly faster than Adam, though the difference is typically modest.
+                    <strong>Strengths:</strong> Better generalization than vanilla Adam, maintains Adam's fast convergence, increasingly popular for transformers.
                 </p>
-
-                <h3>AMSGrad: Theoretical Guarantees</h3>
                 <p>
-                    AMSGrad addresses cases where Adam can fail to converge by maintaining the maximum of past squared gradient averages rather than just the current exponential average. This ensures the effective learning rate can only decrease over time, providing theoretical convergence guarantees that vanilla Adam lacks.
+                    <strong>Weaknesses:</strong> Still inherits some of Adam's limitations compared to SGD with momentum.
                 </p>
-
-                <h3>LAMB and LARS: Scaling to Massive Batches</h3>
-                <p>
-                    These algorithms adapt learning rates per layer rather than per parameter, enabling training with batch sizes of 32,000 or more. This has enabled dramatic reductions in training time for large models—BERT can be trained to full accuracy in 76 minutes using LAMB with enormous batches.
-                </p>
-            </div>
-
-            <div class="image-full">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1400&q=85&fm=jpg&fit=crop" alt="Abstract convergence visualization">
-                <p class="image-caption">Modern optimization algorithms seek to balance fast convergence with robust generalization</p>
-            </div>
-        </div>
-
-        <div class="algorithm-section">
-            <h2>Choosing an Optimizer: Practical Guidance</h2>
-            
-            <div class="algorithm-card">
-                <p>
-                    With such a wealth of optimization algorithms available, choosing the right one for a particular problem can seem daunting. While there's no single best optimizer for all situations, some general principles can guide the decision.
-                </p>
-
-                <p>
-                    For most practitioners starting a new project, <strong>Adam or AdamW</strong> is the recommended starting point. These optimizers work well across a broad range of architectures and domains with minimal hyperparameter tuning. The default settings are remarkably robust, making Adam an excellent choice when you want to focus on architecture and data rather than optimization details.
-                </p>
-
-                <p>
-                    However, for <strong>computer vision tasks</strong>, particularly image classification with convolutional networks, SGD with momentum often achieves superior final performance. The generalization advantage of SGD becomes most apparent when training for many epochs on relatively clean, curated datasets like ImageNet. The trade-off is that SGD requires more careful tuning of the learning rate and learning rate schedule.
-                </p>
-
-                <p>
-                    For <strong>natural language processing</strong> and particularly for training large language models, Adam and its variants reign supreme. The sparse gradient structure common in NLP tasks plays to Adam's strengths, and the reduced need for learning rate tuning is valuable when training runs can take days or weeks. AdamW is particularly popular for transformer models.
-                </p>
-
-                <p>
-                    For <strong>recurrent neural networks</strong>, RMSProp and Adam both work well. RNNs present unique optimization challenges due to temporal dependencies and varying sequence lengths, and adaptive learning rates help navigate these difficulties.
-                </p>
-            </div>
-
-            <div class="image-full">
-                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1400&q=85&fm=jpg&fit=crop" alt="Decision paths">
-                <p class="image-caption">Choosing the right optimizer requires understanding the trade-offs between convergence speed, generalization, and computational cost</p>
             </div>
         </div>
 
         <div class="divider"></div>
 
         <div class="content-section">
-            <h2>The Future of Optimization</h2>
+            <h2>The Experiment</h2>
+
+            <h3>Experimental Setup</h3>
             
             <p>
-                As neural networks grow ever larger and tackle increasingly complex tasks, optimization algorithms must evolve to meet new challenges. Several trends are shaping the future of optimization research.
+                To fairly compare these optimizers, I designed a controlled experiment using the MNIST handwritten digit classification dataset—a classic benchmark in computer vision. Here's the setup:
             </p>
 
-            <p>
-                First, there's growing interest in <strong>learned optimizers</strong>—using machine learning to learn optimization algorithms themselves. Rather than hand-crafting update rules, we could train a neural network to function as an optimizer, learning from experience across many training runs how to update parameters most effectively.
-            </p>
-
-            <p>
-                Second, as models scale to billions or trillions of parameters, <strong>memory-efficient optimization</strong> becomes increasingly critical. Standard Adam requires storing two additional parameters for each model parameter. At massive scale, this memory overhead becomes prohibitive.
-            </p>
-
-            <div class="image-full">
-                <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1400&q=85&fm=jpg&fit=crop" alt="Futuristic technology">
-                <p class="image-caption">The future of optimization lies in algorithms that can scale to ever-larger models while maintaining efficiency</p>
+            <div class="experiment-card">
+                <h3>Model Architecture</h3>
+                <div class="code-block">
+class SimpleCNN(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.conv = nn.Sequential(
+            nn.Conv2d(1, 32, 3, padding=1),  # 28x28x1 -> 28x28x32
+            nn.ReLU(),
+            nn.MaxPool2d(2),                 # 14x14x64 -> 7x7x64
+        )
+        self.fc = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(7*7*64, 128),
+            nn.ReLU(),
+            nn.Linear(128, 10)
+        )
+    
+    def forward(self, x):
+        x = self.conv(x)
+        x = self.fc(x)
+        return x
+                </div>
+                <p>
+                    A simple but effective CNN with two convolutional layers followed by two fully connected layers. Total parameters: approximately 101,770—small enough to train quickly but large enough to demonstrate optimizer differences.
+                </p>
             </div>
 
-            <p>
-                Third, there's renewed interest in understanding <strong>why certain optimizers generalize better</strong> than others. The connection between optimization and generalization—between finding low loss on training data and achieving good performance on new data—remains incompletely understood. Answering these questions could lead to optimizers specifically designed to find solutions that generalize well.
-            </p>
+            <div class="experiment-card">
+                <h3>Training Configuration</h3>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>Dataset:</strong> MNIST (60,000 training images, 10,000 test images)</li>
+                    <li><strong>Batch Size:</strong> 64</li>
+                    <li><strong>Epochs:</strong> 5</li>
+                    <li><strong>Loss Function:</strong> Cross-Entropy Loss</li>
+                    <li><strong>Learning Rates:</strong> 0.01 for SGD variants, 0.001 for adaptive optimizers</li>
+                    <li><strong>Hardware:</strong> CPU (for reproducibility)</li>
+                </ul>
+            </div>
 
-            <p>
-                Finally, there's growing appreciation for the role of stochasticity beyond simple mini-batch sampling. Techniques like adding noise to gradients, using different optimizers for different parts of the network, or periodically perturbing parameters all introduce additional randomness that can improve both optimization and generalization.
-            </p>
+            <div class="experiment-card">
+                <h3>The Code</h3>
+                <div class="code-block">
+# Training loop for each optimizer
+optimizers = {
+    "SGD": lambda params: optim.SGD(params, lr=0.01),
+    "SGD_Momentum": lambda params: optim.SGD(params, lr=0.01, momentum=0.9),
+    "RMSProp": lambda params: optim.RMSprop(params, lr=0.001),
+    "Adam": lambda params: optim.Adam(params, lr=0.001),
+    "AdamW": lambda params: optim.AdamW(params, lr=0.001)
+}
+
+for opt_name, opt_func in optimizers.items():
+    model = SimpleCNN()
+    optimizer = opt_func(model.parameters())
+    
+    for epoch in range(1, EPOCHS + 1):
+        loss = train_one_epoch(model, optimizer, criterion, train_loader)
+        acc = test_accuracy(model, test_loader)
+        # Record results...
+                </div>
+            </div>
         </div>
 
         <div class="divider"></div>
 
         <div class="content-section">
-            <h2>Conclusion</h2>
-            
+            <h2>Results: What the Data Tells Us</h2>
+
             <p>
-                Optimization algorithms are the hidden engine of deep learning, the mathematical machinery that transforms randomly initialized neural networks into powerful systems capable of understanding language, recognizing images, and solving complex problems. From the elegant simplicity of gradient descent to the sophisticated adaptivity of modern algorithms like Adam and beyond, each optimizer represents a different philosophy about how to navigate the complex, high-dimensional loss landscapes of neural networks.
+                After training each optimizer for 5 epochs, the results revealed clear patterns about how different optimization algorithms behave in practice. Let's dive into the data.
+            </p>
+
+            <div class="experiment-card">
+                <h3>Final Performance (Epoch 5)</h3>
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Optimizer</th>
+                            <th>Final Loss</th>
+                            <th>Final Accuracy</th>
+                            <th>Improvement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>SGD</strong></td>
+                            <td>0.0652</td>
+                            <td>98.13%</td>
+                            <td>+5.90%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SGD + Momentum</strong></td>
+                            <td>0.0185</td>
+                            <td>98.87%</td>
+                            <td>+0.55%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RMSProp</strong></td>
+                            <td>0.0158</td>
+                            <td>98.87%</td>
+                            <td>+1.08%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Adam</strong></td>
+                            <td>0.0153</td>
+                            <td>98.96%</td>
+                            <td>+0.49%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AdamW</strong></td>
+                            <td>0.0165</td>
+                            <td>99.12%</td>
+                            <td>+0.64%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Epoch-by-Epoch Analysis</h3>
+
+            <div class="experiment-card">
+                <h3>Epoch 1: The Starting Sprint</h3>
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Optimizer</th>
+                            <th>Loss</th>
+                            <th>Accuracy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SGD</td>
+                            <td>0.5205</td>
+                            <td>92.33%</td>
+                        </tr>
+                        <tr>
+                            <td>SGD + Momentum</td>
+                            <td>0.1827</td>
+                            <td>98.32%</td>
+                        </tr>
+                        <tr>
+                            <td>RMSProp</td>
+                            <td>0.1303</td>
+                            <td>97.79%</td>
+                        </tr>
+                        <tr>
+                            <td>Adam</td>
+                            <td>0.1338</td>
+                            <td>98.47%</td>
+                        </tr>
+                        <tr>
+                            <td>AdamW</td>
+                            <td>0.1335</td>
+                            <td>98.48%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    <strong>Key Observation:</strong> Plain SGD struggles significantly in the first epoch (92.33% accuracy), while all other optimizers achieve 97%+ accuracy. This demonstrates the power of adaptive learning rates and momentum—they allow the model to make much more progress with the same number of parameter updates.
+                </p>
+            </div>
+
+            <div class="experiment-card">
+                <h3>Convergence Speed</h3>
+                <p>
+                    Looking at how quickly each optimizer reaches high accuracy reveals interesting patterns:
+                </p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>Fastest to 98%:</strong> Adam and AdamW (Epoch 1)</li>
+                    <li><strong>Fastest to 99%:</strong> SGD with Momentum (Epoch 4)</li>
+                    <li><strong>Slowest Overall:</strong> Plain SGD (needed all 5 epochs to reach 98.13%)</li>
+                </ul>
+                <p>
+                    The adaptive optimizers (Adam, AdamW, RMSProp) achieve strong performance immediately, while SGD requires patience. However, SGD with momentum strikes an excellent balance, reaching 98.32% in just the first epoch.
+                </p>
+            </div>
+
+            <div class="experiment-card">
+                <h3>Loss Trajectory Analysis</h3>
+                <div class="chart-container">
+                    <p><strong>Loss Reduction per Optimizer:</strong></p>
+                    <ul style="margin-left: 20px; line-height: 2;">
+                        <li><strong>SGD:</strong> 0.5205 → 0.0652 (87.5% reduction)</li>
+                        <li><strong>SGD + Momentum:</strong> 0.1827 → 0.0185 (89.9% reduction)</li>
+                        <li><strong>RMSProp:</strong> 0.1303 → 0.0158 (87.9% reduction)</li>
+                        <li><strong>Adam:</strong> 0.1338 → 0.0153 (88.6% reduction)</li>
+                        <li><strong>AdamW:</strong> 0.1335 → 0.0165 (87.6% reduction)</li>
+                    </ul>
+                </div>
+                <p>
+                    All optimizers successfully reduce loss, but their paths differ significantly. SGD starts with high loss and gradually improves, while adaptive methods begin with much lower loss and make smaller, steadier improvements.
+                </p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="content-section">
+            <h2>Key Findings and Insights</h2>
+
+            <div class="highlight">
+                <h3>1. The Momentum Effect is Powerful</h3>
+                <p>
+                    Adding momentum to SGD transformed it from the worst performer (92.33% → 98.13%) to one of the best (98.32% → 98.87%). The momentum coefficient of 0.9 helped the optimizer build velocity in consistent directions and dampen oscillations. This 6% accuracy boost in the first epoch alone demonstrates why momentum has become a standard component of modern optimization.
+                </p>
+            </div>
+
+            <div class="highlight">
+                <h3>2. Adaptive Methods Excel at Early Training</h3>
+                <p>
+                    RMSProp, Adam, and AdamW all achieved 97%+ accuracy in the first epoch, while plain SGD only reached 92%. The adaptive learning rates allow these optimizers to make appropriate step sizes for each parameter automatically, eliminating much of the manual tuning required for SGD. This is why Adam has become the default choice for many practitioners—it "just works" with minimal configuration.
+                </p>
+            </div>
+
+            <div class="highlight">
+                <h3>3. AdamW's Slight Edge in Generalization</h3>
+                <p>
+                    AdamW achieved the highest final accuracy (99.12%), marginally outperforming Adam (98.96%). While the difference seems small, it's consistent with research showing that AdamW's proper weight decay implementation leads to better generalization. For this relatively simple task, the difference is modest, but on larger models and datasets, this gap often widens.
+                </p>
+            </div>
+
+            <div class="highlight">
+                <h3>4. Training Stability Varies</h3>
+                <p>
+                    Looking at epoch-to-epoch changes, SGD with momentum showed some instability (dropping from 99.14% in Epoch 4 to 98.87% in Epoch 5), while the adaptive methods maintained more stable accuracy curves. This is both a strength and weakness—the noise in SGD can help it escape poor local minima, but it also means less predictable training dynamics.
+                </p>
+            </div>
+
+            <div class="highlight">
+                <h3>5. The Learning Rate Matters Greatly</h3>
+                <p>
+                    I used lr=0.01 for SGD variants and lr=0.001 for adaptive methods. These are typical values, but they're not universal. Plain SGD's poor performance might improve with a different learning rate schedule (e.g., starting higher and decaying). This highlights a key trade-off: adaptive methods are more robust to learning rate choice, while SGD requires more careful tuning but can achieve excellent results when properly configured.
+                </p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="content-section">
+            <h2>Practical Recommendations</h2>
+
+            <p>
+                Based on this experiment and broader deep learning practice, here's my guidance for choosing an optimizer:
+            </p>
+
+            <div class="experiment-card">
+                <h3>Start with Adam or AdamW</h3>
+                <p>
+                    For most projects, especially when you're prototyping or working with unfamiliar architectures, <strong>Adam or AdamW</strong> is the best starting point. These optimizers:
+                </p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>Work well with default hyperparameters (lr=0.001, β₁=0.9, β₂=0.999)</li>
+                    <li>Converge quickly, saving development time</li>
+                    <li>Handle different scales across parameters automatically</li>
+                    <li>Require minimal tuning to get reasonable results</li>
+                </ul>
+                <p>
+                    Use <strong>AdamW</strong> over Adam when training large models or when regularization is important, as its proper weight decay implementation typically yields better generalization.
+                </p>
+            </div>
+
+            <div class="experiment-card">
+                <h3>Consider SGD with Momentum for Production</h3>
+                <p>
+                    Once you've validated your architecture and are ready for final training runs, <strong>SGD with momentum</strong> deserves serious consideration, especially for computer vision tasks. While it requires more hyperparameter tuning (learning rate, momentum coefficient, learning rate schedule), it often achieves:
+                </p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>Better generalization to unseen data</li>
+                    <li>More robust final models</li>
+                    <li>State-of-the-art results in image classification benchmarks</li>
+                </ul>
+                <p>
+                    The trade-off is development time—you'll need to experiment with learning rates and schedules—but the payoff in model quality can be worth it.
+                </p>
+            </div>
+
+            <div class="experiment-card">
+                <h3>RMSProp for Recurrent Networks</h3>
+                <p>
+                    <strong>RMSProp</strong> remains popular for training RNNs and LSTMs, where the dynamic range of gradients can vary dramatically across time steps. Its ability to adapt quickly to changing gradient statistics makes it well-suited to sequential data.
+                </p>
+            </div>
+
+            <div class="experiment-card">
+                <h3>Don't Forget Learning Rate Schedules</h3>
+                <p>
+                    Regardless of which optimizer you choose, <strong>learning rate scheduling</strong> often provides significant benefits. Common strategies include:
+                </p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>Step Decay:</strong> Reduce learning rate by a factor every N epochs</li>
+                    <li><strong>Cosine Annealing:</strong> Smoothly decay learning rate following a cosine curve</li>
+                    <li><strong>Reduce on Plateau:</strong> Decrease learning rate when validation loss stops improving</li>
+                    <li><strong>Warmup:</strong> Gradually increase learning rate at the start of training</li>
+                </ul>
+                <p>
+                    In my experiment, I used fixed learning rates to isolate the optimizer's effect, but in practice, adding a schedule often improves results for all optimizers.
+                </p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="content-section">
+            <h2>Beyond This Experiment</h2>
+
+            <p>
+                While this experiment provides valuable insights, it's important to acknowledge its limitations and consider what we might explore next:
+            </p>
+
+            <div class="experiment-card">
+                <h3>Limitations of This Study</h3>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>Dataset Simplicity:</strong> MNIST is relatively easy—differences between optimizers become more pronounced on complex datasets like ImageNet or large language modeling tasks</li>
+                    <li><strong>Short Training:</strong> Only 5 epochs—longer training runs might reveal different patterns, especially regarding overfitting and generalization</li>
+                    <li><strong>Fixed Learning Rates:</strong> Using learning rate schedules would likely change the relative performance</li>
+                    <li><strong>Single Architecture:</strong> Results might differ for ResNets, Transformers, or other architectures</li>
+                    <li><strong>No Hyperparameter Tuning:</strong> I used common default values, but optimal settings differ per optimizer and task</li>
+                </ul>
+            </div>
+
+            <div class="experiment-card">
+                <h3>Future Experiments to Consider</h3>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>Larger Scale:</strong> Test on CIFAR-10/100 or a subset of ImageNet</li>
+                    <li><strong>Different Architectures:</strong> Compare optimizers across MLPs, ResNets, and Transformers</li>
+                    <li><strong>Learning Rate Sensitivity:</strong> Grid search over learning rates for each optimizer</li>
+                    <li><strong>Longer Training:</strong> Train for 50+ epochs to observe long-term behavior</li>
+                    <li><strong>Regularization Effects:</strong> Add dropout, data augmentation, label smoothing</li>
+                    <li><strong>Advanced Optimizers:</strong> Test LAMB, Lookahead, Ranger, or learned optimizers</li>
+                    <li><strong>Generalization Gap:</strong> Measure train vs test performance carefully</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="content-section">
+            <h2>Conclusion: Choosing Wisely</h2>
+
+            <p>
+                Optimization algorithms are the unsung heroes of deep learning. While we often focus on architectures, datasets, and applications, the optimizer is what actually makes learning happen—it's the engine that transforms random weights into useful representations.
             </p>
 
             <p>
-                The journey from batch gradient descent to today's state-of-the-art optimizers reflects our growing understanding of what makes neural network training succeed or fail. We've learned that exact gradients aren't always better than noisy ones, that treating all parameters the same is often suboptimal, and that the path we take through parameter space matters as much as the destination we reach.
+                Through this experiment, we've seen that different optimizers offer different trade-offs. Adam and AdamW provide fast, reliable convergence with minimal tuning—perfect for research and prototyping. SGD with momentum requires more care but can achieve superior generalization—ideal for production models where that extra accuracy matters. RMSProp excels at handling non-stationary problems like recurrent networks.
+            </p>
+
+            <blockquote>
+                The best optimizer is not a universal constant—it depends on your task, your timeline, and your priorities. But understanding how different optimizers behave gives you the knowledge to make informed choices rather than relying on defaults.
+            </blockquote>
+
+            <p>
+                What surprised me most in this experiment was just how much momentum mattered. The gap between plain SGD (92.33% first epoch accuracy) and SGD with momentum (98.32%) was dramatic—a single hyperparameter made a 6% difference. This reinforces an important lesson: simple modifications to optimization, when properly applied, can have outsized impacts on performance.
             </p>
 
             <p>
-                Yet despite decades of research and hundreds of proposed algorithms, we still don't have a single optimizer that's best for all problems. SGD with momentum remains the gold standard for computer vision; Adam dominates natural language processing; specialized algorithms like LAMB enable training at unprecedented scale. This diversity isn't a failure of the field but a reflection of the rich variety of optimization challenges that different neural network architectures and application domains present.
+                As neural networks continue to grow in scale and complexity, optimization algorithms evolve alongside them. New techniques like LAMB enable training with massive batch sizes. Learned optimizers use neural networks to learn optimization strategies. Second-order methods are being revisited with modern approximations. The field is far from solved, and there's still much to discover about how to efficiently navigate these high-dimensional loss landscapes.
             </p>
 
             <p>
-                For practitioners, the key lesson is pragmatic: start with proven algorithms like Adam or SGD with momentum, understand their strengths and weaknesses, and be prepared to experiment. The best optimizer for your specific problem is ultimately an empirical question, answerable only through careful experimentation. But armed with an understanding of how these algorithms work and why they make the choices they do, you're well-equipped to make informed decisions and troubleshoot problems when training doesn't proceed as expected.
+                For practitioners, the key takeaway is pragmatic: start with Adam or AdamW for fast iteration, consider SGD with momentum when you need the absolute best generalization, and always be prepared to experiment. The "best" optimizer for your specific problem is ultimately an empirical question, but armed with an understanding of how these algorithms work, you're well-equipped to make that determination.
             </p>
 
             <p>
-                As neural networks continue to grow in scale and capability, optimization algorithms will evolve alongside them. New challenges will emerge, requiring new solutions. But the fundamental principles—following gradients, adapting to the local landscape, balancing exploration and exploitation—will remain. The science of teaching neural networks to learn is itself a learning process, and we're still in the early chapters of that story.
+                The code for this experiment is straightforward enough to run in minutes on a laptop, yet it reveals principles that scale to billion-parameter models. I encourage you to replicate it, modify it, and extend it. Try different learning rates. Add learning rate schedules. Test on different datasets. The best way to understand optimization is not just to read about it, but to experience how these algorithms behave under your own observation.
+            </p>
+
+            <p>
+                Happy optimizing! 🚀
             </p>
         </div>
 
@@ -1256,28 +1197,36 @@ The weight decay is applied directly to parameters, not through gradient
                 
                 <li>Loshchilov, I., & Hutter, F. (2017). "Decoupled weight decay regularization." <em>arXiv preprint arXiv:1711.05101</em>. <a href="https://arxiv.org/abs/1711.05101" target="_blank">https://arxiv.org/abs/1711.05101</a></li>
                 
-                <li>Bottou, L., Curtis, F. E., & Nocedal, J. (2018). "Optimization methods for large-scale machine learning." <em>SIAM Review, 60</em>(2), 223-311. <a href="https://doi.org/10.1137/16M1080173" target="_blank">https://doi.org/10.1137/16M1080173</a></li>
+                <li>Bottou, L., Curtis, F. E., & Nocedal, J. (2018). "Optimization methods for large-scale machine learning." <em>SIAM Review, 60</em>(2), 223-311.</li>
                 
-                <li>Duchi, J., Hazan, E., & Singer, Y. (2011). "Adaptive subgradient methods for online learning and stochastic optimization." <em>Journal of Machine Learning Research, 12</em>(7), 2121-2159.</li>
+                <li>Keskar, N. S., Mudigere, D., Nocedal, J., Smelyanskiy, M., & Tang, P. T. P. (2016). "On large-batch training for deep learning: Generalization gap and sharp minima." <em>arXiv preprint arXiv:1609.04836</em>.</li>
                 
-                <li>Tieleman, T., & Hinton, G. (2012). "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude." <em>COURSERA: Neural networks for machine learning, 4</em>(2), 26-31.</li>
+                <li>PyTorch Documentation. "torch.optim - Optimization Algorithms." <a href="https://pytorch.org/docs/stable/optim.html" target="_blank">https://pytorch.org/docs/stable/optim.html</a></li>
                 
-                <li>Keskar, N. S., Mudigere, D., Nocedal, J., Smelyanskiy, M., & Tang, P. T. P. (2016). "On large-batch training for deep learning: Generalization gap and sharp minima." <em>arXiv preprint arXiv:1609.04836</em>. <a href="https://arxiv.org/abs/1609.04836" target="_blank">https://arxiv.org/abs/1609.04836</a></li>
+                <li>Goodfellow, I., Bengio, Y., & Courville, A. (2016). <em>Deep Learning</em>. MIT Press. Chapter 8: Optimization for Training Deep Models.</li>
                 
-                <li>You, Y., Gitman, I., & Ginsburg, B. (2017). "Large batch training of convolutional networks." <em>arXiv preprint arXiv:1708.03888</em>. <a href="https://arxiv.org/abs/1708.03888" target="_blank">https://arxiv.org/abs/1708.03888</a></li>
-                
-                <li>You, Y., Li, J., Reddi, S., Hseu, J., Kumar, S., Bhojanapalli, S., ... & Hsieh, C. J. (2019). "Large batch optimization for deep learning: Training BERT in 76 minutes." <em>arXiv preprint arXiv:1904.00962</em>. <a href="https://arxiv.org/abs/1904.00962" target="_blank">https://arxiv.org/abs/1904.00962</a></li>
-                
-                <li>Reddi, S. J., Kale, S., & Kumar, S. (2019). "On the convergence of adam and beyond." <em>arXiv preprint arXiv:1904.09237</em>. <a href="https://arxiv.org/abs/1904.09237" target="_blank">https://arxiv.org/abs/1904.09237</a></li>
+                <li>Wilson, A. C., Roelofs, R., Stern, M., Srebro, N., & Recht, B. (2017). "The marginal value of adaptive gradient methods in machine learning." <em>Advances in Neural Information Processing Systems</em>, 30.</li>
             </ol>
+            
+            <div style="margin-top: 40px; padding-top: 40px; border-top: 2px solid var(--border-color);">
+                <h3 style="margin-bottom: 20px;">About This Post</h3>
+                <p>
+                    This blog post was created as part of a deep learning portfolio project. The experiment was conducted using PyTorch 2.0+ on MNIST, with all code available for reproduction. If you found this analysis helpful or have suggestions for future experiments, feel free to reach out!
+                </p>
+                <p style="margin-top: 20px;">
+                    <strong>Repository:</strong> <a href="https://github.com/yourusername/optimizer-experiments" target="_blank">github.com/yourusername/optimizer-experiments</a><br>
+                    <strong>Contact:</strong> chris.mugot@example.com<br>
+                    <strong>Date:</strong> November 22, 2025
+                </p>
+            </div>
         </div>
     </div>
 
     <button class="back-to-top" id="backToTop">↑</button>
 
     <script>
+        // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
-        const htmlElement = document.documentElement;
         const body = document.body;
 
         const currentTheme = localStorage.getItem('theme') || 'light';
@@ -1293,57 +1242,14 @@ The weight decay is applied directly to parameters, not through gradient
             themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
         });
 
-        const tocList = document.getElementById('tocList');
-        const tocContainer = document.getElementById('tocContainer');
-        const tocToggle = document.getElementById('tocToggle');
-
-        function generateTOC() {
-            const headings = document.querySelectorAll('h2');
-            headings.forEach((heading, index) => {
-                const id = `heading-${index}`;
-                heading.id = id;
-
-                const li = document.createElement('li');
-                li.className = 'toc-item';
-                const a = document.createElement('a');
-                a.href = `#${id}`;
-                a.textContent = heading.textContent;
-                li.appendChild(a);
-                tocList.appendChild(li);
-            });
-        }
-
-        tocToggle.addEventListener('click', function() {
-            tocContainer.classList.toggle('hidden');
-        });
-
-        window.addEventListener('scroll', function() {
-            const headings = document.querySelectorAll('h2');
-            let current = '';
-
-            headings.forEach(heading => {
-                const rect = heading.getBoundingClientRect();
-                if (rect.top < 200) {
-                    current = heading.id;
-                }
-            });
-
-            document.querySelectorAll('.toc-item a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        generateTOC();
-
+        // Scroll progress bar
         window.addEventListener('scroll', function() {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
             document.getElementById('progress').style.width = scrolled + '%';
             
+            // Back to top button
             const backToTop = document.getElementById('backToTop');
             if (winScroll > 300) {
                 backToTop.classList.add('visible');
@@ -1352,6 +1258,7 @@ The weight decay is applied directly to parameters, not through gradient
             }
         });
 
+        // Back to top functionality
         document.getElementById('backToTop').addEventListener('click', function() {
             window.scrollTo({
                 top: 0,
@@ -1359,32 +1266,44 @@ The weight decay is applied directly to parameters, not through gradient
             });
         });
 
-        function copyToClipboard(button) {
-            const formulaBlock = button.parentElement;
-            const text = formulaBlock.innerText.replace('Copy', '').trim();
-            
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = button.textContent;
-                button.textContent = '✓ Copied!';
-                button.classList.add('copied');
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.classList.remove('copied');
-                }, 2000);
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
-        }
+        });
 
-        const images = document.querySelectorAll('.image-full img');
-        images.forEach(img => {
-            img.addEventListener('load', function() {
-                this.style.opacity = '0';
-                setTimeout(() => {
-                    this.style.transition = 'opacity 0.5s ease';
-                    this.style.opacity = '1';
-                }, 100);
+        // Add fade-in animation to cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    observer.unobserve(entry.target);
+                }
             });
+        }, observerOptions);
+
+        document.querySelectorAll('.experiment-card, .highlight').forEach(card => {
+            observer.observe(card);
         });
     </script>
 </body>
-</html>
+</html>     

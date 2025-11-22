@@ -45,8 +45,8 @@ jobs:
           mkdir -p mybook/_build/html/docs/labs
           cp mybook/docs/ProjectDeliverables/file1.pdf mybook/_build/html/docs/ProjectDeliverables/
           cp mybook/docs/ProjectDeliverables/file2.pdf mybook/_build/html/docs/ProjectDeliverables/
-          cp mybook/docs/NarrativeReport/report2.pdf mybook/_build/html/docs/NarrativeReport/
           cp mybook/docs/NarrativeReport/report1.pdf mybook/_build/html/docs/NarrativeReport/
+          cp mybook/docs/NarrativeReport/report2.pdf mybook/_build/html/docs/NarrativeReport/
           cp mybook/docs/labs/blog.html mybook/_build/html/docs/labs/
 
       - name: Upload artifact
