@@ -338,6 +338,8 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .experiment-card::before {
@@ -583,7 +585,7 @@
             .header h1 {
                 font-size: 2.5em;
             }
-            
+
             .container {
                 padding: 60px 30px;
             }
@@ -643,7 +645,6 @@
     </div>
 
     <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
-
     <div class="scroll-progress" id="progress"></div>
 
     <div class="header">
@@ -666,11 +667,9 @@
 
         <div class="content-section">
             <h2>The Optimization Landscape</h2>
-            
             <p>
                 Imagine standing on a mountainous terrain shrouded in fog. Your goal is to find the lowest valley, but you can only see a few feet around you. This is essentially what optimization algorithms do—they navigate the high-dimensional loss landscape of neural networks using only local gradient information.
             </p>
-
             <p>
                 The challenge is formidable. Modern neural networks often have millions or billions of parameters, creating a loss landscape that exists in unimaginably high-dimensional space. This landscape is non-convex, meaning it contains countless local minima where an optimizer might get stuck. It contains saddle points that can trap optimization algorithms, and vast plateaus where gradients are nearly zero, making it difficult to determine which direction to move.
             </p>
@@ -684,7 +683,6 @@
 
         <div class="content-section">
             <h2>The Contenders</h2>
-
             <p>
                 For this experiment, I selected five popular optimizers that represent different philosophies in optimization:
             </p>
@@ -695,9 +693,9 @@
 θ(t+1) = θ(t) - η · g(t)
 
 Where:
-θ = model parameters
-η = learning rate (0.01 in our experiment)
-g(t) = gradient estimate from mini-batch
+  θ = model parameters
+  η = learning rate (0.01 in our experiment)
+  g(t) = gradient estimate from mini-batch
                 </div>
                 <p>
                     <strong>Philosophy:</strong> The simplest approach—take steps in the direction opposite to the gradient. SGD uses mini-batches to approximate the true gradient, introducing beneficial noise that can help escape sharp local minima.
@@ -717,8 +715,8 @@ v(t) = β · v(t-1) + η · g(t)
 θ(t+1) = θ(t) - v(t)
 
 Where:
-v(t) = velocity vector (accumulated gradient)
-β = momentum coefficient (0.9 in our experiment)
+  v(t) = velocity vector (accumulated gradient)
+  β = momentum coefficient (0.9 in our experiment)
                 </div>
                 <p>
                     <strong>Philosophy:</strong> Maintain a running average of past gradients (velocity). If gradients consistently point in one direction, build up speed. If they oscillate, the oscillations cancel out.
@@ -738,9 +736,9 @@ E[g²](t) = γ · E[g²](t-1) + (1 - γ) · g(t)²
 θ(t+1) = θ(t) - (η / √(E[g²](t) + ε)) · g(t)
 
 Where:
-E[g²](t) = exponentially weighted average of squared gradients
-γ = decay rate (0.9 in PyTorch default)
-ε = small constant for numerical stability (10^-8)
+  E[g²](t) = exponentially weighted average of squared gradients
+  γ = decay rate (0.9 in PyTorch default)
+  ε = small constant for numerical stability (10^-8)
                 </div>
                 <p>
                     <strong>Philosophy:</strong> Adapt the learning rate for each parameter based on recent gradient magnitudes. Parameters with large gradients get smaller learning rates; parameters with small gradients maintain larger learning rates.
@@ -758,16 +756,14 @@ E[g²](t) = exponentially weighted average of squared gradients
                 <div class="formula-block">
 m(t) = β₁ · m(t-1) + (1 - β₁) · g(t)
 v(t) = β₂ · v(t-1) + (1 - β₂) · g(t)²
-
 m̂(t) = m(t) / (1 - β₁^t)
 v̂(t) = v(t) / (1 - β₂^t)
-
 θ(t+1) = θ(t) - η · m̂(t) / (√(v̂(t)) + ε)
 
 Where:
-m(t) = first moment estimate (like momentum)
-v(t) = second moment estimate (like RMSProp)
-β₁ = 0.9, β₂ = 0.999 (typical values)
+  m(t) = first moment estimate (like momentum)
+  v(t) = second moment estimate (like RMSProp)
+  β₁ = 0.9, β₂ = 0.999 (typical values)
                 </div>
                 <p>
                     <strong>Philosophy:</strong> Combine the best of momentum and RMSProp. Maintain running averages of both gradients and squared gradients, with bias correction for early training steps.
@@ -786,8 +782,8 @@ v(t) = second moment estimate (like RMSProp)
 θ(t+1) = θ(t) - η · (m̂(t) / (√(v̂(t)) + ε) + λ · θ(t))
 
 Where:
-λ = weight decay coefficient
-Weight decay applied directly to parameters, not through gradient
+  λ = weight decay coefficient
+  Weight decay applied directly to parameters, not through gradient
                 </div>
                 <p>
                     <strong>Philosophy:</strong> Fix Adam's incorrect implementation of weight decay by decoupling it from the gradient-based update. Apply weight decay directly to parameters after the adaptive update.
@@ -805,9 +801,7 @@ Weight decay applied directly to parameters, not through gradient
 
         <div class="content-section">
             <h2>The Experiment</h2>
-
             <h3>Experimental Setup</h3>
-            
             <p>
                 To fairly compare these optimizers, I designed a controlled experiment using the MNIST handwritten digit classification dataset—a classic benchmark in computer vision. Here's the setup:
             </p>
@@ -821,7 +815,10 @@ class SimpleCNN(nn.Module):
         self.conv = nn.Sequential(
             nn.Conv2d(1, 32, 3, padding=1),  # 28x28x1 -> 28x28x32
             nn.ReLU(),
-            nn.MaxPool2d(2),                 # 14x14x64 -> 7x7x64
+            nn.MaxPool2d(2),                 # 28x28x32 -> 14x14x32
+            nn.Conv2d(32, 64, 3, padding=1), # 14x14x32 -> 14x14x64
+            nn.ReLU(),
+            nn.MaxPool2d(2)                  # 14x14x64 -> 7x7x64
         )
         self.fc = nn.Sequential(
             nn.Flatten(),
@@ -829,7 +826,7 @@ class SimpleCNN(nn.Module):
             nn.ReLU(),
             nn.Linear(128, 10)
         )
-    
+
     def forward(self, x):
         x = self.conv(x)
         x = self.fc(x)
@@ -880,7 +877,6 @@ for opt_name, opt_func in optimizers.items():
 
         <div class="content-section">
             <h2>Results: What the Data Tells Us</h2>
-
             <p>
                 After training each optimizer for 5 epochs, the results revealed clear patterns about how different optimization algorithms behave in practice. Let's dive into the data.
             </p>
@@ -1054,7 +1050,6 @@ for opt_name, opt_func in optimizers.items():
 
         <div class="content-section">
             <h2>Practical Recommendations</h2>
-
             <p>
                 Based on this experiment and broader deep learning practice, here's my guidance for choosing an optimizer:
             </p>
@@ -1118,7 +1113,6 @@ for opt_name, opt_func in optimizers.items():
 
         <div class="content-section">
             <h2>Beyond This Experiment</h2>
-
             <p>
                 While this experiment provides valuable insights, it's important to acknowledge its limitations and consider what we might explore next:
             </p>
@@ -1152,11 +1146,9 @@ for opt_name, opt_func in optimizers.items():
 
         <div class="content-section">
             <h2>Conclusion: Choosing Wisely</h2>
-
             <p>
                 Optimization algorithms are the unsung heroes of deep learning. While we often focus on architectures, datasets, and applications, the optimizer is what actually makes learning happen—it's the engine that transforms random weights into useful representations.
             </p>
-
             <p>
                 Through this experiment, we've seen that different optimizers offer different trade-offs. Adam and AdamW provide fast, reliable convergence with minimal tuning—perfect for research and prototyping. SGD with momentum requires more care but can achieve superior generalization—ideal for production models where that extra accuracy matters. RMSProp excels at handling non-stationary problems like recurrent networks.
             </p>
@@ -1168,19 +1160,15 @@ for opt_name, opt_func in optimizers.items():
             <p>
                 What surprised me most in this experiment was just how much momentum mattered. The gap between plain SGD (92.33% first epoch accuracy) and SGD with momentum (98.32%) was dramatic—a single hyperparameter made a 6% difference. This reinforces an important lesson: simple modifications to optimization, when properly applied, can have outsized impacts on performance.
             </p>
-
             <p>
                 As neural networks continue to grow in scale and complexity, optimization algorithms evolve alongside them. New techniques like LAMB enable training with massive batch sizes. Learned optimizers use neural networks to learn optimization strategies. Second-order methods are being revisited with modern approximations. The field is far from solved, and there's still much to discover about how to efficiently navigate these high-dimensional loss landscapes.
             </p>
-
             <p>
                 For practitioners, the key takeaway is pragmatic: start with Adam or AdamW for fast iteration, consider SGD with momentum when you need the absolute best generalization, and always be prepared to experiment. The "best" optimizer for your specific problem is ultimately an empirical question, but armed with an understanding of how these algorithms work, you're well-equipped to make that determination.
             </p>
-
             <p>
                 The code for this experiment is straightforward enough to run in minutes on a laptop, yet it reveals principles that scale to billion-parameter models. I encourage you to replicate it, modify it, and extend it. Try different learning rates. Add learning rate schedules. Test on different datasets. The best way to understand optimization is not just to read about it, but to experience how these algorithms behave under your own observation.
             </p>
-
             <p>
                 Happy optimizing! 🚀
             </p>
@@ -1192,22 +1180,15 @@ for opt_name, opt_func in optimizers.items():
             <h3>References & Further Reading</h3>
             <ol>
                 <li>Ruder, S. (2016). "An overview of gradient descent optimization algorithms." <em>arXiv preprint arXiv:1609.04747</em>. <a href="https://arxiv.org/abs/1609.04747" target="_blank">https://arxiv.org/abs/1609.04747</a></li>
-                
                 <li>Kingma, D. P., & Ba, J. (2014). "Adam: A method for stochastic optimization." <em>arXiv preprint arXiv:1412.6980</em>. <a href="https://arxiv.org/abs/1412.6980" target="_blank">https://arxiv.org/abs/1412.6980</a></li>
-                
                 <li>Loshchilov, I., & Hutter, F. (2017). "Decoupled weight decay regularization." <em>arXiv preprint arXiv:1711.05101</em>. <a href="https://arxiv.org/abs/1711.05101" target="_blank">https://arxiv.org/abs/1711.05101</a></li>
-                
                 <li>Bottou, L., Curtis, F. E., & Nocedal, J. (2018). "Optimization methods for large-scale machine learning." <em>SIAM Review, 60</em>(2), 223-311.</li>
-                
                 <li>Keskar, N. S., Mudigere, D., Nocedal, J., Smelyanskiy, M., & Tang, P. T. P. (2016). "On large-batch training for deep learning: Generalization gap and sharp minima." <em>arXiv preprint arXiv:1609.04836</em>.</li>
-                
                 <li>PyTorch Documentation. "torch.optim - Optimization Algorithms." <a href="https://pytorch.org/docs/stable/optim.html" target="_blank">https://pytorch.org/docs/stable/optim.html</a></li>
-                
                 <li>Goodfellow, I., Bengio, Y., & Courville, A. (2016). <em>Deep Learning</em>. MIT Press. Chapter 8: Optimization for Training Deep Models.</li>
-                
                 <li>Wilson, A. C., Roelofs, R., Stern, M., Srebro, N., & Recht, B. (2017). "The marginal value of adaptive gradient methods in machine learning." <em>Advances in Neural Information Processing Systems</em>, 30.</li>
             </ol>
-            
+
             <div style="margin-top: 40px; padding-top: 40px; border-top: 2px solid var(--border-color);">
                 <h3 style="margin-bottom: 20px;">About This Post</h3>
                 <p>
@@ -1225,38 +1206,62 @@ for opt_name, opt_func in optimizers.items():
     <button class="back-to-top" id="backToTop">↑</button>
 
     <script>
+    // Prevent multiple initializations in Jupyter
+    (function initializeBlog() {
+        'use strict';
+        
+        // Check if already initialized
+        if (window.blogOptimizersInitialized) {
+            console.log('Blog already initialized, skipping...');
+            return;
+        }
+        window.blogOptimizersInitialized = true;
+
         // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
-
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        if (currentTheme === 'dark') {
-            body.classList.add('dark-mode');
-            themeToggle.textContent = '☀️';
+        
+        // Check for saved theme preference
+        try {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            if (currentTheme === 'dark') {
+                body.classList.add('dark-mode');
+                themeToggle.textContent = '☀️';
+            }
+        } catch (e) {
+            // LocalStorage might not be available in some Jupyter environments
+            console.log('LocalStorage not available, using default theme');
         }
 
         themeToggle.addEventListener('click', function() {
             body.classList.toggle('dark-mode');
             const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
-            localStorage.setItem('theme', theme);
             themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+            
+            try {
+                localStorage.setItem('theme', theme);
+            } catch (e) {
+                // Silently fail if localStorage isn't available
+            }
         });
 
         // Scroll progress bar
-        window.addEventListener('scroll', function() {
+        function updateScrollProgress() {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
             document.getElementById('progress').style.width = scrolled + '%';
-            
-            // Back to top button
+
+            // Back to top button visibility
             const backToTop = document.getElementById('backToTop');
             if (winScroll > 300) {
                 backToTop.classList.add('visible');
             } else {
                 backToTop.classList.remove('visible');
             }
-        });
+        }
+
+        window.addEventListener('scroll', updateScrollProgress);
 
         // Back to top functionality
         document.getElementById('backToTop').addEventListener('click', function() {
@@ -1280,33 +1285,14 @@ for opt_name, opt_func in optimizers.items():
             });
         });
 
-        // Add fade-in animation to cards on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '0';
-                    entry.target.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, 100);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
+        // Initialize cards as visible (skip IntersectionObserver in Jupyter)
         document.querySelectorAll('.experiment-card, .highlight').forEach(card => {
-            observer.observe(card);
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
         });
+
+        console.log('Blog initialized successfully!');
+    })();
     </script>
 </body>
-</html> 28x28x32 -> 14x14x32
-            nn.Conv2d(32, 64, 3, padding=1), # 14x14x32 -> 14x14x64
-            nn.ReLU(),
-            nn.MaxPool2d(2),                 #
+</html>

@@ -26,8 +26,7 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
-  extra_path:
-    - docs
+  # REMOVED 'extra_path' to prevent sidebar duplication glitch
   collapse_navigation: false     # keeps sidebar fully expanded
   navigation_depth: 4            # ensures sections stay visible
 
