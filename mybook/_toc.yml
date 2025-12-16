@@ -25,6 +25,8 @@ chapters:
         title: Report 3
       - file: docs/ProjectDeliverables/file4_view
         title: Report 4
+      - file: docs/ProjectDeliverables/file5_view
+        title: Final Project Manuscript
 
   - file: docs/NarrativeReport/README
     title: 📝 Narrative Report
@@ -36,6 +38,6 @@ chapters:
       - file: docs/NarrativeReport/report3_view
         title: Narrative Report 3
       - file: docs/NarrativeReport/report4_view
-        title: Narrative Report 4 
+        title: Narrative Report 4
       - file: docs/NarrativeReport/report5_view
-        title: Final Manuscript
+        title: Narrative Report 5
